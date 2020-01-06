@@ -5,7 +5,6 @@ function Process(post_type, endpoint, rand) {
 
     let postType;
     let apiEndpoint;
-    let nextMonth;
     let catSet;
     let tagSet;
     let pageSet;
@@ -13,6 +12,7 @@ function Process(post_type, endpoint, rand) {
     let year;
     let year2; 
     let nextYear;
+    let nextMonth;
     let month;
     const apiUrl = window.Configs.apiUrl;
 
@@ -22,6 +22,7 @@ function Process(post_type, endpoint, rand) {
             postType = post_type + 's';
             if (endpoint) { apiEndpoint = `?slug=` + endpoint; }
             else { pageSet = true; }
+            // apiEndpoint is set in if(pageSet)
             break;
         case 'post':
             postType = post_type + 's';
@@ -70,9 +71,9 @@ function Process(post_type, endpoint, rand) {
             // get the category id from WP API and set apiEndpoint
             if (catSet) {
                 const categoryData = await fetch(`${apiUrl}/categories/`);
-                const categoryContent = await categoryData.json();
+                const categoryDataContent = await categoryData.json();
 
-                categoryContent.map(cat => {
+                categoryDataContent.map(cat => {
                     if (cat.slug === endpoint[0]) {
                         // eslint-disable-next-line
                         return (apiEndpoint = `?categories=` + cat.id + pageNum);
@@ -82,16 +83,16 @@ function Process(post_type, endpoint, rand) {
             // get the tag id from WP API and set apiEndpoint       
             if (tagSet) {
                 const tagsData = await fetch(`${apiUrl}/tags/`);
-                const tagsContent = await tagsData.json();
+                const tagsDataContent = await tagsData.json();
 
-                tagsContent.map(tag => {
+                tagsDataContent.map(tag => {
                     if (tag.slug === endpoint) {
                         // eslint-disable-next-line
                         return (apiEndpoint = `?tags=` + tag.id);
                     } else { return (''); }
                 });
             }
-            // get the tag id from WP API and set apiEndpoint       
+            // get the homepage from WP API and set apiEndpoint       
             if (pageSet) {
                 const info = await fetch(`${apiUrl}/bloginfo`);
                 const bloginfo = await info.json();
