@@ -37,10 +37,10 @@ const Footer = () => {
                             <h3>{window.Configs.companyTitle}</h3>
                             <p>{window.Configs.companyDesc}</p>
                             <div className="col item social">
-                                <a href="https://www.facebook.com/Simple-React-WordPress-108764483975236/" target="blank"><i className="icon ion-social-facebook"></i></a>
-                                <a href="#"><i className="icon ion-social-twitter"></i></a>
-                                <a href="#"><i className="icon ion-social-snapchat"></i></a>
-                                <a href="#"><i className="icon ion-social-instagram"></i></a>
+                                <a href={window.Configs.facebookUrl} target="blank"><i className="icon ion-social-facebook"></i></a>
+                                <a href={window.Configs.twitterUrl}><i className="icon ion-social-twitter"></i></a>
+                                <a href={window.Configs.snapchatUrl}><i className="icon ion-social-snapchat"></i></a>
+                                <a href={window.Configs.instagramUrl}><i className="icon ion-social-instagram"></i></a>
                             </div>
                         </div>
                     </div>

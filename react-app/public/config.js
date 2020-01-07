@@ -17,6 +17,10 @@ var Configs = {
 	companyTitle: "Simple React WordPress",
 	companyDesc: "Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.",
 	copyright: "© 2019 Simple React WordPress | Powered by React and WordPress",
+	facebookUrl: "https://www.facebook.com/reactwordpress/",
+	twitterUrl: "",
+	snapchatUrl: "",
+	instagramUrl: ""
 
 }
 
