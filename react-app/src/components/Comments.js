@@ -10,7 +10,7 @@ const Comments = (props) => {
 
 
         async function getMenu() {
-            const response = await fetch(`${apiUrl}/wp-json/wp/v2/comments?author_email=leifkahal@gmail.com&author_name=rustyrev&content=test&post=185`, {
+            const response = await fetch(`${apiUrl}/wp-json/wp/v2/comments?author_email=[author email]&author_name=[author name]&content=test&post=185`, {
                 method: 'POST'})
             console.log(response);
         }
