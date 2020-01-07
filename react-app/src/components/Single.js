@@ -2,7 +2,6 @@ import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Process from './Process'
 
-
 const Single = (props) => {
 
     let postType = props.postType;
