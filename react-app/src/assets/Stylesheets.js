@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Stylesheets = () => {
     const apiDomain = window.Configs.apiDomain;
     const stylesheetUrls = window.Configs.stylesheetUrls;
