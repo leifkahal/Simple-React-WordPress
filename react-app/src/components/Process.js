@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-
 function Process(post_type, endpoint, rand) {
 
     let postType;
