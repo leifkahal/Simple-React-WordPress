@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Link } from 'react-router-dom';
-import Pagination from 'react-bootstrap/Pagination'
+import Pagination from 'react-bootstrap/Pagination' 
 
 const Paginate = (props) => {
 
