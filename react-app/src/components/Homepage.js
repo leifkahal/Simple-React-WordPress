@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Page from './Page'
-import Posts from './Posts'
+import Posts from './Posts' 
 
 const Homepage = ({ match }) => {
 
