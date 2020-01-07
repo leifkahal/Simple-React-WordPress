@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 //Add Hero image and text if present in `views` field from WP API data
-const Hero = (props) => {
+const Hero = (props) => { 
 
   if (props.hero_img.length === 0) {
     return ('')
