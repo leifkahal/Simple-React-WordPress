@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Process from './Process'
-import Paginate from './Paginate'
+import Paginate from './Paginate' 
 
 
 
