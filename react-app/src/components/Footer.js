@@ -9,31 +9,34 @@ const Footer = () => {
     const postID = '';
     const theContent = Process(postType, postID);
     const footerContent = theContent;
+    const apiDomain = window.Configs.apiDomain;
+    const reactUrl = window.Configs.reactUrl;
     let i = 0;
     let j = 0;
 
     return (
-        <div className="footer-dark">
+        <div id="footer_dark" className="footer-dark" style={{ display: 'none'}}>
             <footer>
                 <div className="container">
                     <div className="row">
                         {footerContent.map(footerItem => {
                             i++;
                             return (
-                                <div key={footerItem.title + i} className="col-sm-6 col-md-3 item">
+                                <div key={footerItem.title + i} className="col-sm-6 col-md-3 item footer-menu-container">
                                     <h3 className="footer-title">{footerItem.title}</h3>
                                     <ul>
                                         {footerItem.links.map(linkItem => {
                                             j++;
+                                            const linkTo = () => { return (linkItem.url.replace(apiDomain,'').replace(reactUrl,'')) }
                                             return (
-                                                <li key={2354 + j}><Link to={linkItem.url} role="tab" data-rb-event-key="/blog/" aria-selected="true" className="navbar-footer nav-link active">{linkItem.label}</Link></li>
+                                                <li key={2354 + j}><Link to={linkTo} role="tab" data-rb-event-key="/blog/" aria-selected="true" className="navbar-footer nav-link active">{linkItem.label}</Link></li>
                                             );
                                         })}
                                     </ul>
                                 </div>
                             );
                         })}
-                        <div className="col-md-6 item text">
+                        <div className="col-md-6 item text company-info">
                             <h3>{window.Configs.companyTitle}</h3>
                             <p>{window.Configs.companyDesc}</p>
                             <div className="col item social">

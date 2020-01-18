@@ -15,7 +15,7 @@ const Hero = (props) => {
         <div className="clean-hero-text">
           <h2>{props.title}</h2>
           <Excerpt excerpt={props.excerpt} />
-          <Link to={props.cta}><button className="btn btn-outline-light btn-lg" type="button">Learn More</button></Link>
+          <Link to={props.ctaBtn}><button className="btn btn-outline-light btn-lg" type="button">{props.ctaTxt}</button></Link>
         </div>
       </div>
     )

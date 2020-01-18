@@ -1,28 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Page from './Page'
 import Posts from './Posts' 
 
-const Homepage = ({ match }) => {
+const Homepage = () => {
 
-    const apiUrl = window.Configs.apiUrl;
-    const [bloginfo, setInfo] = useState([]);
-
-    useEffect(() => {
-        async function getMenu() {
-            const info = await fetch(`${apiUrl}/bloginfo`);
-            const bloginfo = await info.json();
-            setInfo(bloginfo);
-        }
-        getMenu();
-    }, [apiUrl]);
-
-    if (bloginfo[2] === 'blog/') {
+    if (window.Configs.frontPage === 'blog/') {
         return (
             <Posts />
         );
     } else {
         return (
-            <Page />
+            <Page id={window.Configs.frontPage} />
         );
     }
 

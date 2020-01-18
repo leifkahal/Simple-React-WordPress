@@ -12,7 +12,7 @@ import Homepage from './components/Homepage'
 function App() { 
 
   return (
-    <div className="app-wrapper page">
+    <div className="app-wrapper page" style={{minHeight: '100vh'}}>
       <Router>
         <Navibar />
         <Switch>
@@ -21,7 +21,6 @@ function App() {
           <Route path="/tag/:tag" exact component={Posts} />
           <Route path="/archive/:year/:month" exact component={Posts} />
           <Route path="/:post/:id/" exact component={Posts} />
-          <Route path="/blog/" exact component={Page} />
           <Route path="/page=:blogPage" exact component={Posts} />
           <Route path="/:id/" exact component={Page} />
           <Route path="/" exact component={Homepage} />

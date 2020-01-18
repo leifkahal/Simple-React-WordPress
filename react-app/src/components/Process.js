@@ -6,7 +6,6 @@ function Process(post_type, endpoint, rand) {
     let apiEndpoint;
     let catSet;
     let tagSet;
-    let pageSet;
     let pageNum;
     let year;
     let year2; 
@@ -19,9 +18,7 @@ function Process(post_type, endpoint, rand) {
     switch (post_type) {
         case 'page':
             postType = post_type + 's';
-            if (endpoint) { apiEndpoint = `?slug=` + endpoint; }
-            else { pageSet = true; }
-            // apiEndpoint is set in if(pageSet)
+            apiEndpoint = `?slug=` + endpoint;
             break;
         case 'post':
             postType = post_type + 's';
@@ -91,12 +88,6 @@ function Process(post_type, endpoint, rand) {
                     } else { return (''); }
                 });
             }
-            // get the homepage from WP API and set apiEndpoint       
-            if (pageSet) {
-                const info = await fetch(`${apiUrl}/bloginfo`);
-                const bloginfo = await info.json();
-                apiEndpoint = `?slug=` + bloginfo[2];
-            }
             /*****************************************************************************************************
              **********************Finally! the actual call to the WordPress REST API*****************************
              *****************************************************************************************************/
@@ -107,7 +98,6 @@ function Process(post_type, endpoint, rand) {
             // getnumber of pages from api response header to use in pagination
             window.pages = apiData.headers.get('X-WP-TotalPages');
 
-
             // check if wp-api returned the data we requested
             // failed call will either return empty or with a data object
             if (theData.data) { setData(false); }
@@ -116,6 +106,7 @@ function Process(post_type, endpoint, rand) {
 
             window.scrollTo(0, 0);
             document.getElementById('spinner').style.display = 'none';
+            document.getElementById('footer_dark').style.display = 'block';
         }
         getPage();
     }, [rand])

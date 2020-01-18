@@ -14,11 +14,11 @@ const Single = (props) => {
     function createHTML() {
         return { __html: singleContent.map(html => (html.content.rendered)) };
     }
-console.log(singleContent);
+
     if (singleContent) {
         return (
-            <Col md={9} lg={9} xl={10}>
-                <h4>{singleContent.map(html => (html.title.rendered))}</h4>
+            <Col md={9} lg={9} xl={9}>
+                <h1>{singleContent.map(html => (html.title.rendered))}</h1>
                 <div dangerouslySetInnerHTML={createHTML()} className='wp-html' />
             </Col>
         );

@@ -51,7 +51,7 @@ const Posts = ({ match }) => {
         return (
             <div className="category-wrapper">
                 <Row>
-                    <Col md={3} lg={3} xl={2} className="sidebar-container"><Sidebar /></Col>
+                    <Col md={3} lg={3} xl={3} className="sidebar-container"><Sidebar /></Col>
                     <Single postType={postType} endpoint={endpoint} rand={rand} />
                 </Row>
 
@@ -61,7 +61,7 @@ const Posts = ({ match }) => {
         return (
             <div className="category-wrapper" style={{ minHeight: '100vh' }}>
                 <Row>
-                    <Col md={3} lg={3} xl={2} className="sidebar-container"><Sidebar /></Col>
+                    <Col md={3} lg={3} xl={3} className="sidebar-container"><Sidebar /></Col>
                     <PostList postType={postType} endpoint={endpoint} rand={rand} currentPage={pageNum} />
                 </Row>
             </div>

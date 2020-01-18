@@ -9,6 +9,8 @@ const Sidebar = () => {
     const postID = 'json';
     const theContent = Process(postType, postID);
     const widgetContent = theContent;
+    const apiDomain = window.Configs.apiDomain;
+    const reactUrl = window.Configs.reactUrl;
     let i = 0;
     let j = 0;
 
@@ -29,8 +31,9 @@ const Sidebar = () => {
                                     <div key={j} dangerouslySetInnerHTML={createMarkup()} />
                                 );
                             } else {
+                                const linkTo = () => { return (linkItem.url.replace(apiDomain,'').replace(reactUrl,'')) }
                                 return (
-                                    <Link key={j} to={linkItem.url} className="navbar-left nav-link active">{linkItem.label}</Link>
+                                    <Link key={j} to={linkTo} className="navbar-left nav-link active">{linkItem.label}</Link>
                                 );
                             }
                         })}

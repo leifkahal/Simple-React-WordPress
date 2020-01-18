@@ -3,17 +3,23 @@ import Hero from "./Hero"
 import Process from './Process' 
 
 
-const Page = ({ match }) => {
+const Page = (props) => {
 
     const postType = 'page';
     let endpoint;
     let theContent;
     let pageContent;
 
-    if (match) {
-        endpoint = match.params.id;
-        theContent = Process(postType, endpoint, match);
+    if (props.id) {
+        endpoint = props.id;
+        theContent = Process(postType, endpoint, props.id);
         pageContent = theContent;
+    }
+    else if (props.match) {
+        endpoint = props.match.params.id;
+        theContent = Process(postType, endpoint, props.match);
+        pageContent = theContent;
+    } 
 
 
         function createMarkup() {
@@ -25,7 +31,7 @@ const Page = ({ match }) => {
                 <div className="page-wrapper" style={{ minHeight: '100vh' }}>
                     {pageContent.map(apiString => {
                         return (
-                            <Hero key={apiString.id} title={apiString.title.rendered} hero_img={apiString.hero_img} excerpt={apiString.excerpt.rendered} cta={apiString.cta_btn} />
+                            <Hero key={apiString.id} title={apiString.title.rendered} hero_img={apiString.hero_img} excerpt={apiString.excerpt.rendered} ctaBtn={apiString.cta_btn} ctaTxt={apiString.cta_txt} />
                         );
 
                     })}
@@ -35,22 +41,17 @@ const Page = ({ match }) => {
                 </div>
             );
         }
-        else {
+        else if (props.match) {
             return (
                 <div className="page-wrapper wp-page-html">
                     <h1>404 Not Found</h1>
                 </div>)
         }
-    }
-    // match not set return empty div and set height to hide footer during page load.
-    // inline style is so it is applied immediately.
-    else {
-        return (
-            <div className="page-wrapper" style={{ minHeight: '101vh' }}></div>
-        );
-    }
-
-
+        else {
+            return (
+                <div className="page-wrapper" style={{ minHeight: '101vh' }}></div>
+            );
+        }
 
 }
 

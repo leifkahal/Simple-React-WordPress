@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav'; 
+import Nav from 'react-bootstrap/Nav';
 
 const Navibar = () => {
 
@@ -9,6 +9,8 @@ const Navibar = () => {
     const [expanded, setExpanded] = useState(false);
     const [bloginfo, setInfo] = useState([]);
     const apiUrl = window.Configs.apiUrl;
+    const apiDomain = window.Configs.apiDomain;
+    const reactUrl = window.Configs.reactUrl;
 
     useEffect(() => {
         async function getMenu() {
@@ -22,6 +24,8 @@ const Navibar = () => {
         getMenu();
     }, [apiUrl]);
 
+    window.frontPage = bloginfo[2];
+
     return (
         <Navbar expanded={expanded} sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="#home">
@@ -34,11 +38,11 @@ const Navibar = () => {
                 />{' '}
                 <div className="bloginfo">{bloginfo[0]}<br /><span className="blog-description">{bloginfo[1]}</span></div>
             </Navbar.Brand>
-            <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="responsive-navbar-nav" className="navbar-toggle" style={{display:'none'}} />
+            <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="responsive-navbar-nav" className="navbar-toggle" style={{ display: 'none' }} />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
                     {menu.map(navItem => {
-                        const linkTo = () => { return (navItem.url) }
+                        const linkTo = () => { return (navItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
                         return (
                             <Link key={navItem.ID} onClick={() => setExpanded(false)} to={linkTo} className="navbar-right nav-link active">{navItem.title}</Link>);
                     })}
