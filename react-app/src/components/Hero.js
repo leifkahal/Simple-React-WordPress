@@ -18,7 +18,7 @@ const Hero = (props) => {
           <Link to={props.ctaBtn}><button className="btn btn-outline-light btn-lg" type="button">{props.ctaTxt}</button></Link>
         </div>
       </div>
-    )
+    ) 
   }
 }
 

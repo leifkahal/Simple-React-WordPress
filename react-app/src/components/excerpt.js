@@ -9,4 +9,4 @@ const Excerpt = (props) => {
     }
 }
 
-export default Excerpt;
+export default Excerpt; 

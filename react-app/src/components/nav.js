@@ -47,7 +47,7 @@ const Navibar = () => {
                             <Link key={navItem.ID} onClick={() => setExpanded(false)} to={linkTo} className="navbar-right nav-link active">{navItem.title}</Link>);
                     })}
                 </Nav>
-            </Navbar.Collapse>
+            </Navbar.Collapse> 
         </Navbar>
 
     );
