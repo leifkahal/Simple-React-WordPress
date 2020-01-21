@@ -5,7 +5,7 @@ const Excerpt = (props) => {
         return (<h5 className="hero">{props.excerpt}</h5>)
     }
     else {
-        return (<p>Text in the excerpt will be displayed here.</p>)
+        return (<h5 className="hero">Text in the excerpt will be displayed here.</h5>)
     }
 }
 

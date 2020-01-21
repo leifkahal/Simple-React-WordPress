@@ -17,7 +17,7 @@ const Navibar = () => {
             const info = await fetch(`${apiUrl}/bloginfo`);
             const bloginfo = await info.json();
             setInfo(bloginfo);
-            const response = await fetch(`${apiUrl}/menu`);
+            const response = await fetch(`${apiUrl}/menu.json`);
             const navItems = await response.json();
             setMenu(navItems);
         }

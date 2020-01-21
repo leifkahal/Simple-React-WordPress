@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "simple-react-wordpress",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -35,5 +35,26 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Headless WordPress with React front-end using the WordPress REST Api.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leifkahal/Simple-React-WordPress.git"
+  },
+  "keywords": [
+    "Wordpress",
+    "WordPress",
+    "REST",
+    "Api",
+    "React",
+    "WordPress"
+  ],
+  "author": "Leif Kahal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leifkahal/Simple-React-WordPress/issues"
+  },
+  "homepage": "https://github.com/leifkahal/Simple-React-WordPress#readme"
 }
