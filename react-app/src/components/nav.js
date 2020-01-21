@@ -31,9 +31,9 @@ const Navibar = () => {
             <Navbar.Brand href="#home">
                 <img
                     alt=""
-                    src="/logo192.png"
-                    width="54"
-                    height="34"
+                    src="/simple-react-wordpress.svg"
+                    width="62"
+                    height="36"
                     className="d-inline-block align-top"
                 />{' '}
                 <div className="bloginfo">{bloginfo[0]}<br /><span className="blog-description">{bloginfo[1]}</span></div>
