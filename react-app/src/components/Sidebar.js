@@ -33,7 +33,7 @@ const Sidebar = () => {
                             } else {
                                 const linkTo = () => { return (linkItem.url.replace(apiDomain,'').replace(reactUrl,'')) }
                                 return (
-                                    <Link key={j} to={linkTo} className="navbar-left nav-link active">{linkItem.label}</Link>
+                                    <Link key={j} to={linkTo} className="navbar-left nav-link srwp-nav-link">{linkItem.label}</Link>
                                 );
                             }
                         })}

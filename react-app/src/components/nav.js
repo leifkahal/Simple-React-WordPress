@@ -44,7 +44,7 @@ const Navibar = () => {
                     {menu.map(navItem => {
                         const linkTo = () => { return (navItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
                         return (
-                            <Link key={navItem.ID} onClick={() => setExpanded(false)} to={linkTo} className="navbar-right nav-link active">{navItem.title}</Link>);
+                            <Link key={navItem.ID} onClick={() => setExpanded(false)} to={linkTo} className="navbar-right nav-link srwp-nav-link">{navItem.title}</Link>);
                     })}
                 </Nav>
             </Navbar.Collapse> 

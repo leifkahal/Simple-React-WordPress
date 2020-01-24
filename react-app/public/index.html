@@ -40,10 +40,27 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="http://admin.simplereactwordpress.com/wp-content/themes/simpleReactWP/js/config.js"></script>
-  <script>$(document).on("click", "a", function () { document.getElementById("footer_dark").style.display = "none" });</script>
+
+  <script>
+    !function (a, b, c) { (c = a.createElement(b)).async = !0, c.src = window.Configs.jqueryJs, (a = a.getElementsByTagName(b)[0]).parentNode.insertBefore(c, a) }(document, "script");
+  </script>
+
+  <script>
+    !function (d, e, f) { (f = d.createElement(e)).async = !0, f.src = window.Configs.popperJs, (d = d.getElementsByTagName(e)[0]).parentNode.insertBefore(f, d) }(document, "script");
+  </script>
+
+  <script>
+    !function (g, h, i) { (i = g.createElement(h)).async = !0, i.src = window.Configs.bootstrapJs, (g = g.getElementsByTagName(h)[0]).parentNode.insertBefore(i, g) }(document, "script");
+  </script>
+
+  <script>
+    document.addEventListener('click', function (event) {
+      // If the clicked element doesn't have the right selector, bail
+      if (!event.target.matches('.srwp-nav-link')) return;
+      document.getElementById("footer_dark").style.display = "none"
+    }, false);
+  </script>
 </body>
 
 </html>

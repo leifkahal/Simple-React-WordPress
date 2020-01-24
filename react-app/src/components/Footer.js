@@ -29,7 +29,7 @@ const Footer = () => {
                                             j++;
                                             const linkTo = () => { return (linkItem.url.replace(apiDomain,'').replace(reactUrl,'')) }
                                             return (
-                                                <li key={2354 + j}><Link to={linkTo} role="tab" data-rb-event-key="/blog/" aria-selected="true" className="navbar-footer nav-link active">{linkItem.label}</Link></li>
+                                                <li key={2354 + j}><Link to={linkTo} role="tab" data-rb-event-key="/blog/" aria-selected="true" className="navbar-footer nav-link srwp-nav-link">{linkItem.label}</Link></li>
                                             );
                                         })}
                                     </ul>

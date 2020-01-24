@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker'
 
 
 
+
 ReactDOM.render(
 <div className="spinner-div"><Spinner animation="border" variant="primary" /></div>
 , document.getElementById('spinner'));
