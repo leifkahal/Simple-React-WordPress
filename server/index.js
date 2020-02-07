@@ -1,3 +1,5 @@
+#!/usr/bin/env nodejs
+
 require('ignore-styles')
 
 require('@babel/register') ({

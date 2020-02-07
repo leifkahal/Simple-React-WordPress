@@ -8,25 +8,26 @@ import FourOFour from "../src/components/404";
 
 const app = express();
 const fetch = require('node-fetch');
+let bloginfo;
+
+fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
+    .then(ress => ress.json())
+    .then(json => {
+        bloginfo = json
+    }).catch(err => console.error(err))
 
 
 // Page Routes
 app.get('/', (req, res) => {
-    
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                res.send(
-                    // eslint-disable-next-line
-                    data.replace(
-                        `<meta/>`,
-                        `<title>${json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0]}"/> <meta name="twitter:description" content="${json[1]}"/> <meta name="description" content="${json[4]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
-                    ),
-                )
-
-            }).catch(err => console.error(err))
+        res.send(
+            // eslint-disable-next-line
+            data.replace(
+                `<meta/>`,
+                `<script>${'var Configs =' + global.Configs}</script><title>${json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0]}"/> <meta name="twitter:description" content="${json[1]}"/> <meta name="description" content="${json[4]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
+            )
+        )
     })
 
 })
@@ -45,7 +46,7 @@ app.get('/:id', (req, res) => {
                     // eslint-disable-next-line
                     data.replace(
                         `<meta/>`,
-                        `<title>${json[0].title.rendered}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0].title.rendered}"/> <meta name="twitter:description" content="${json[0].excerpt.rendered}"/> <meta name="description" content="${json[0].excerpt.rendered}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0].title.rendered}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[0].excerpt.rendered}"/> <meta name="twitter:image" content="${json[0].fimg_url}"/> <meta property="og:image" content="${json[0].fimg_url}"/> <meta property="og:image:url" content=""/> <meta property="og:image:secure_url" content="${json[0].fimg_url}"/>`
+                        `<script>${'var Configs =' + global.Configs}</script><title>${json[0].title.rendered}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0].title.rendered}"/> <meta name="twitter:description" content="${json[0].excerpt.rendered}"/> <meta name="description" content="${json[0].excerpt.rendered}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0].title.rendered}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[0].excerpt.rendered}"/> <meta name="twitter:image" content="${json[0].fimg_url}"/> <meta property="og:image" content="${json[0].fimg_url}"/> <meta property="og:image:url" content=""/> <meta property="og:image:secure_url" content="${json[0].fimg_url}"/>`
                     ),
                 )
 
@@ -58,20 +59,16 @@ app.get('/:id', (req, res) => {
 app.get('/category/:title', (req, res, next) => {
 
     const title = req.params.title.replace(/^\w/, c => c.toUpperCase())
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                res.send(
-                    // eslint-disable-next-line
-                    data.replace(
-                        `<meta/>`,
-                        `<title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
-                    ),
-                )
+        res.send(
+            // eslint-disable-next-line
+            data.replace(
+                `<meta/>`,
+                `<script>${'var Configs =' + global.Configs}</script><title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
+            ),
+        )
 
-            }).catch(err => console.error(err))
     })
 
 })
@@ -79,20 +76,16 @@ app.get('/category/:title', (req, res, next) => {
 app.get('/category/:title/page=:pageNum', (req, res, next) => {
 
     const title = req.params.title.replace(/^\w/, c => c.toUpperCase())
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                res.send(
-                    // eslint-disable-next-line
-                    data.replace(
-                        `<meta/>`,
-                        `<title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
-                    ),
-                )
+        res.send(
+            // eslint-disable-next-line
+            data.replace(
+                `<meta/>`,
+                `<script>${'var Configs =' + global.Configs}</script><title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
+            ),
+        )
 
-            }).catch(err => console.error(err))
     })
 
 })
@@ -100,20 +93,16 @@ app.get('/category/:title/page=:pageNum', (req, res, next) => {
 app.get('/tag/:tag', (req, res, next) => {
 
     const title = req.params.tag.replace(/^\w/, c => c.toUpperCase());
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                res.send(
-                    // eslint-disable-next-line
-                    data.replace(
-                        `<meta/>`,
-                        `<title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
-                    ),
-                )
+        res.send(
+            // eslint-disable-next-line
+            data.replace(
+                `<meta/>`,
+                `<script>${'var Configs =' + global.Configs}</script><title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
+            ),
+        )
 
-            }).catch(err => console.error(err))
     })
 
 })
@@ -135,20 +124,16 @@ app.get('/archive/:year/:month', (req, res, next) => {
     month[12] = "December";
 
     const title = 'Archives: ' + month[req.params.month] + ' ' + req.params.year;
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                res.send(
-                    // eslint-disable-next-line
-                    data.replace(
-                        `<meta/>`,
-                        `<title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
-                    ),
-                )
+        res.send(
+            // eslint-disable-next-line
+            data.replace(
+                `<meta/>`,
+                `<script>${'var Configs =' + global.Configs}</script><title>${title + ' | ' + json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${title + ' | ' + json[0]}"/> <meta name="twitter:description" content="${json[4]}"/> <meta name="description" content="${json[1]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${title + ' | ' + json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
+            ),
+        )
 
-            }).catch(err => console.error(err))
     })
 
 })
@@ -165,7 +150,7 @@ app.get('/:post/:id/', (req, res, next) => {
                     // eslint-disable-next-line
                     data.replace(
                         `<meta/>`,
-                        `<title>${json[0].title.rendered}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0].title.rendered}"/> <meta name="twitter:description" content="${json[0].excerpt.rendered}"/> <meta name="description" content="${json[0].excerpt.rendered}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0].title.rendered}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[0].excerpt.rendered}"/> <meta name="twitter:image" content="${json[0].fimg_url}"/> <meta property="og:image" content="${json[0].fimg_url}"/> <meta property="og:image:url" content=""/> <meta property="og:image:secure_url" content="${json[0].fimg_url}"/>`
+                        `<script>${'var Configs =' + global.Configs}</script><title>${json[0].title.rendered}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0].title.rendered}"/> <meta name="twitter:description" content="${json[0].excerpt.rendered}"/> <meta name="description" content="${json[0].excerpt.rendered}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0].title.rendered}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[0].excerpt.rendered}"/> <meta name="twitter:image" content="${json[0].fimg_url}"/> <meta property="og:image" content="${json[0].fimg_url}"/> <meta property="og:image:url" content=""/> <meta property="og:image:secure_url" content="${json[0].fimg_url}"/>`
                     ),
                 )
 
@@ -176,34 +161,28 @@ app.get('/:post/:id/', (req, res, next) => {
 
 app.get('/page=:blogPage', (req, res, next) => {
 
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                res.send(
-                    // eslint-disable-next-line
-                    data.replace(
-                        `<meta/>`,
-                        `<title>${json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0]}"/> <meta name="twitter:description" content="${json[1]}"/> <meta name="description" content="${json[4]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
-                    ),
-                )
+        res.send(
+            // eslint-disable-next-line
+            data.replace(
+                `<meta/>`,
+                `<script>${'var Configs =' + global.Configs}</script><title>${json[0]}</title> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="${json[0]}"/> <meta name="twitter:description" content="${json[1]}"/> <meta name="description" content="${json[4]}"/> <meta property="og:url" content="${req.protocol + '://' + req.hostname + req.path}"/> <meta property="og:title" content="${json[0]}"/> <meta name="keywords" content=""/> <meta property="og:description" content="${json[1]}"/> <meta name="twitter:image" content=""/> <meta property="og:image" content="${json[5]}"/> <meta property="og:image:url" content="${json[5]}"/> <meta property="og:image:secure_url" content="${json[5]}"/>`
+            ),
+        )
 
-            }).catch(err => console.error(err))
     })
 
 })
 
 app.get('/*', function (req, res, next) {
-    const hostUrl = req.headers.host
+
+    const json = bloginfo
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
-        // get page data for replace in <head>
-        fetch(`http://admin.simplereactwordpress.com/wp-json/wp/v2/bloginfo`)
-            .then(ress => ress.json())
-            .then(json => {
-                const reactDom = renderToString(<FourOFour />)
-                res.status(404).send(`<html lang="en"><head><meta content-type="text/html"><link rel="icon" href="/favicon.ico">
-                <link rel="stylesheet" href="http://admin.simplereactwordpress.com/wp-content/themes/simpleReactWP/style.css?ver=1.0">
+
+        const reactDom = renderToString(<FourOFour />)
+        res.status(404).send(`<html lang="en"><head><meta content-type="text/html"><link rel="icon" href="/favicon.ico">
+                <link rel="stylesheet" href="http://admin.simplereactwordpress.com/wp-content/themes/simpleReactWP/style.css?ver=1.0"><script>${'var Configs =' + global.Configs}</script>
                 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><meta name="description" content="Web site created using create-react-app"><link rel="apple-touch-icon" href="logo192.png"><link rel="manifest" href="/manifest.json"><script src="http://admin.simplereactwordpress.com/wp-content/themes/simpleReactWP/js/config.js"></script><title>404 | Simple React WordPresss</title> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Uncategorized | Simple React WordPress"> <meta name="twitter:description" content="Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo."> <meta name="description" content="WordPress + React + Bootstrap"> <meta property="og:url" content="http://simplereactwordpress.com/category/uncategorized/"> <meta property="og:title" content="Uncategorized | Simple React WordPress"> <meta name="keywords" content=""> <meta property="og:description" content="WordPress + React + Bootstrap"> <meta name="twitter:image" content=""> <meta property="og:image" content="http://admin.simplereactwordpress.com/wp-content/uploads/2019/12/technology-3389904_1920-1.jpg"> <meta property="og:image:url" content="http://admin.simplereactwordpress.com/wp-content/uploads/2019/12/technology-3389904_1920-1.jpg"> <meta property="og:image:secure_url" content="http://admin.simplereactwordpress.com/wp-content/uploads/2019/12/technology-3389904_1920-1.jpg">
                 <style>
                 body {min-height:100vh !important}
@@ -224,8 +203,7 @@ app.get('/*', function (req, res, next) {
 
                 <script>!function(l){function e(e){for(var r,t,n=e[0],o=e[1],u=e[2],a=0,p=[];a<n.length;a++)t=n[a],Object.prototype.hasOwnProperty.call(i,t)&&i[t]&&p.push(i[t][0]),i[t]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(l[r]=o[r]);for(s&&s(e);p.length;)p.shift()();return c.push.apply(c,u||[]),f()}function f(){for(var e,r=0;r<c.length;r++){for(var t=c[r],n=!0,o=1;o<t.length;o++){var u=t[o];0!==i[u]&&(n=!1)}n&&(c.splice(r--,1),e=a(a.s=t[0]))}return e}var t={},i={1:0},c=[];function a(e){if(t[e])return t[e].exports;var r=t[e]={i:e,l:!1,exports:{}};return l[e].call(r.exports,r,r.exports,a),r.l=!0,r.exports}a.m=l,a.c=t,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(r,e){if(1&e&&(r=a(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var n in r)a.d(t,n,function(e){return r[e]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="/";var r=this["webpackJsonpreact-app"]=this["webpackJsonpreact-app"]||[],n=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=n;f()}([])</script><script src="/static/js/2.a9fb2408.chunk.js"></script><script src="/static/js/main.67ef7463.chunk.js"></script></body></html>`)
 
-            }).catch(err => console.error(err))
-    })
+})
 })
 
 app.listen(3001);

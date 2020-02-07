@@ -57,6 +57,7 @@ const Page = (props) => {
     function handleClick(e) {
         let closestA = e.target.closest('a')
         if (closestA === null) {return}
+        if (closestA.hasClass('nav-item')) {return}
         if (closestA.getAttribute("target") === '_blank') {
             let getHref = closestA + ' '
             if (!getHref) return
