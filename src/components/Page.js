@@ -11,6 +11,7 @@ const Page = (props) => {
     let theContent
     let pageContent
 
+
     // Check if referrer is <Homepage/> or <Route/>
     if (props.id) {
         endpoint = props.id
@@ -22,14 +23,15 @@ const Page = (props) => {
         theContent = Process(postType, endpoint, props.match)
         pageContent = theContent
     }
+
     // If Process.js returns data
     if (pageContent) {
         const title = pageContent.map(html => (html.title.rendered))
 
         return (
-            <div className="page-wrapper close-nav" style={{ minHeight: '100vh' }}>
+            <div id="single" className="page-wrapper" style={{ minHeight: '100vh' }}>
                 <Head title={title} />
-                <div className='wp-page-html'>
+                <div className="wp-page-html" >
                     <div onClick={handleClick} dangerouslySetInnerHTML={createMarkup()} />
                 </div>
             </div>
@@ -51,20 +53,20 @@ const Page = (props) => {
 
     // Functions //////////////////////////////////////////////////////////////////////
     function createMarkup() {
-        return { __html: pageContent.map(html => (html.content.rendered)) };
+        return { __html: pageContent.map(html => (html.content_shortcode)) };
     }
 
     function handleClick(e) {
         let closestA = e.target.closest('a')
-        if (closestA === null) {return}
-        if (closestA.hasClass('nav-item')) {return}
+        if (closestA === null) { return }
+        if (closestA.hasAttribute('data-toggle')) { return }
         if (closestA.getAttribute("target") === '_blank') {
             let getHref = closestA + ' '
             if (!getHref) return
             e.preventDefault()
             let resHref = getHref.split(/href="(.*?...)"/)
             let finalHref = resHref[0].replace(window.Configs.reactUrl, '').replace(':3000', '')
-            window.open(finalHref,'_blank');
+            window.open(finalHref, '_blank');
         }
         else {
             let getHref = closestA + ' ';

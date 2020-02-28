@@ -17,6 +17,7 @@ function PostList(props) {
     let rand = props.rand;
     const apiDomain = global.Configs.apiDomain;
     const reactUrl = global.Configs.reactUrl;
+    const defaultThumb = global.Configs.defaultThumb
 
     const theContent = Process(postType, endpoint, rand);
     const listContent = theContent;
@@ -31,10 +32,10 @@ function PostList(props) {
 
     if (listContent) {
         return (
-            <Col className="main-content" md={9} lg={9} xl={9}>
+            <Col id="post-list" className="main-content" md={9} lg={9} xl={9}>
              <Head title={title} />
                 {listContent.map(apiString => {
-                    if (apiString.fimg_url) { fimg = apiString.fimg_url } else { fimg = `` }
+                    if (apiString.fimg_url) { fimg = apiString.fimg_url } else { fimg = defaultThumb }
                     postDate = new Date(apiString.date).toDateString();
                     return (
                         <Card key={apiString.id}>

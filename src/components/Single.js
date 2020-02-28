@@ -10,10 +10,13 @@ const Single = (props) => {
     let postType = props.postType;
     let endpoint = props.endpoint;
     let rand = props.rand;
+    let title;
 
     const theContent = Process(postType, endpoint, rand);
     const singleContent = theContent;
-    const title = singleContent.map(html => (html.title.rendered))
+    if (singleContent) {
+        title = singleContent.map(html => (html.title.rendered))
+    }
 
     if (singleContent) {
         return (
@@ -28,7 +31,7 @@ const Single = (props) => {
 
     // Functions //////////////////////////////////////////////////////////////////////
     function createHTML() {
-        return { __html: singleContent.map(html => (html.content.rendered)) };
+        return { __html: singleContent.map(html => (html.content_shortcode)) };
     }
 
     function handleClick(e) {

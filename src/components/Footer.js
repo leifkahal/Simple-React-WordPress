@@ -1,21 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import Process from './Process'
 
 
-const Footer = () => {
+const Footer = (props) => {
 
-    const postType = 'footer';
-    const postID = '';
-    const theContent = Process(postType, postID);
-    const footerContent = theContent;
+    const [footerContent, setFooter] = useState([]);
+
+    useEffect(() => {
+        async function getFooter() {
+            const content = await fetch(`${global.Configs.apiUrl}/footer`);
+            const footer = await content.json();
+            setFooter(footer);
+        }
+        getFooter();
+    }, []);
+
     const apiDomain = global.Configs.apiDomain;
     const reactUrl = global.Configs.reactUrl;
+    let reactLink
     let i = 0;
     let j = 0;
 
     return (
-        <div id="footer_dark" className="footer-dark" style={{ display: 'none'}}>
+        <div id="footer_dark" className="footer-dark" style={{ display: 'none' }}>
             <footer>
                 <div className="container">
                     <div className="row">
@@ -27,10 +34,18 @@ const Footer = () => {
                                     <ul>
                                         {footerItem.links.map(linkItem => {
                                             j++;
-                                            const linkTo = () => { return (linkItem.url.replace(apiDomain,'').replace(reactUrl,'')) }
-                                            return (
-                                                <li key={2354 + j}><Link to={linkTo} role="tab" data-rb-event-key="1" aria-selected="true" className="navbar-footer nav-link react-link">{linkItem.label}</Link></li>
-                                            );
+                                            const linkTo = () => { return (linkItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
+                                            // check if is react-link or _blank for footer display:none
+                                            if (linkItem.target === '_blank') { reactLink = '' } else { reactLink = ' react-link' }
+                                            if (reactLink) {
+                                                return (
+                                                    <li key={2354 + j}><Link to={linkTo} role="tab" data-rb-event-key="1" aria-selected="true" className={"navbar-footer nav-link" + reactLink} target={linkItem.target}>{linkItem.label}<ion-icon name="open-outline"></ion-icon></Link></li>
+                                                );
+                                            } else {
+                                                return (
+                                                    <li key={2354 + j}><a href={linkItem.url} role="tab" data-rb-event-key="1" aria-selected="true" className={"navbar-footer nav-link" + reactLink} rel="noopener noreferrer" target={linkItem.target}>{linkItem.label}<ion-icon name="open-outline"></ion-icon></a></li>
+                                                );
+                                            }
                                         })}
                                     </ul>
                                 </div>
@@ -39,15 +54,15 @@ const Footer = () => {
                         <div className="col-md-6 item text company-info">
                             <h3>{global.Configs.companyTitle}</h3>
                             <p>{global.Configs.companyDesc}</p>
-                            <div className="col item social">
+                        </div>
+                    </div>
+                    <div className="col item social">
                                 <a href={global.Configs.facebookUrl} target="blank"><i className="icon ion-social-facebook"></i></a>
                                 <a href={global.Configs.twitterUrl}><i className="icon ion-social-twitter"></i></a>
                                 <a href={global.Configs.snapchatUrl}><i className="icon ion-social-snapchat"></i></a>
                                 <a href={global.Configs.instagramUrl}><i className="icon ion-social-instagram"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    <p className="copyright">{global.Configs.copyright}</p>
+                    <p className="copyright">{global.Configs.copyright}  | Powered by <a href="http://simplereactwordpress.com" style={{color:'#fff'}}>Simple React WordPress®</a></p>
                 </div>
             </footer>
         </div>

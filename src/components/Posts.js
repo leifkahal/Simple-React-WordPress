@@ -8,11 +8,11 @@ import Col from 'react-bootstrap/Col'
 
 const Posts = ({ props, match }) => {
 
-    let postType;
-    let endpoint;
-    let singlePost; 
-    let pageNum;
-    let title;
+    let postType = "";
+    let endpoint = "";
+    let singlePost = ""; 
+    let pageNum = "";
+    let title = "";
     const rand = Math.random();
 
     if (match) {
@@ -53,6 +53,7 @@ const Posts = ({ props, match }) => {
         pageNum = '1';
         title = window.Configs.companyTitle;
     }
+
 
     if (singlePost) {
         return (

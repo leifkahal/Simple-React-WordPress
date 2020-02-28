@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+
+
 function Process(post_type, endpoint, rand) {
 
     let postType;
@@ -35,10 +37,6 @@ function Process(post_type, endpoint, rand) {
             tagSet = true;
             // apiEndpoint is set in if(tagSet)
             break;
-        case 'sidebar':
-            postType = post_type;
-            apiEndpoint = endpoint;
-            break;
         case 'archive':
             postType = 'posts';
             year = endpoint['year'];
@@ -62,6 +60,9 @@ function Process(post_type, endpoint, rand) {
     useEffect(() => {
         document.getElementById("footer_dark").style.display = "none"
         document.getElementById('spinner').style.display = 'block';
+        //didn't like the flash when content changed...
+        
+       
         async function getPage() {
             /*****************************************************************************************************
              ************These endpoints require more info...this is to preserve pretty urls**********************
@@ -106,9 +107,18 @@ function Process(post_type, endpoint, rand) {
             else if (theData.length === 0) { setData(false); }
             else { setData(theData); }
 
-            window.scrollTo(0, 0);
             document.getElementById('spinner').style.display = 'none';
             document.getElementById('footer_dark').style.display = 'block';
+            
+            //add bootstrap class to Gutenberg Form elements
+            if(document.querySelector("form")) {
+                document.querySelector("input[aria-label='Name']").classList.add("form-control");
+                document.querySelector("input[type='Email']").classList.add("form-control");
+                document.querySelector("textarea[aria-label='Message']").classList.add("form-control");
+                document.querySelector("input[aria-label='Website']").classList.add("form-control");
+                document.querySelector("button[name='submit']").classList.add("btn");
+            }
+            window.scrollTo(0, 0);
         }
         getPage();
     }, [rand])

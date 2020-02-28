@@ -6,17 +6,18 @@ import Nav from 'react-bootstrap/Nav';
 const Navibar = (props) => {
 
     const [menu, setMenu] = useState([]);
-    const [expanded, setExpanded] = useState(false);
     const [bloginfo, setInfo] = useState([]);
+    const [expanded, setExpanded] = useState(false);
     const apiUrl = global.Configs.apiUrl;
     const apiDomain = global.Configs.apiDomain;
     const reactUrl = global.Configs.reactUrl;
+    const logo = global.Configs.brandingLogo
+    let brandImg
+    const companyTitle = global.Configs.companyTitle
+    const navbarClasses = global.Configs.navbarClasses
 
     useEffect(() => {
         async function getMenu() {
-            const info = await fetch(`${apiUrl}/bloginfo`);
-            const bloginfo = await info.json();
-            setInfo(bloginfo);
             const response = await fetch(`${apiUrl}/menu.json`);
             const navItems = await response.json();
             setMenu(navItems);
@@ -24,19 +25,27 @@ const Navibar = (props) => {
         getMenu();
     }, [apiUrl]);
 
-    global.frontPage = bloginfo[2];
+    useEffect(() => {
+        async function getInfo() {
+            const info = await fetch(`${global.Configs.apiUrl}/bloginfo`);
+            const bloginfo = await info.json();
+            setInfo(bloginfo);
+        }
+        getInfo();
+    }, []);
+
+    global.frontPage = bloginfo[2]
+    global.Bloginfo = bloginfo
+
+    if(logo) {
+        brandImg = <img alt={companyTitle} src={logo} height="32" className="d-inline-block align-top" />
+    } else { brandImg = ''}
 
     return (
-        <Navbar expanded={expanded} sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark" >
+        <Navbar expanded={expanded} collapseOnSelect expand="lg" className={navbarClasses} >
             <Navbar.Brand href="#home">
-                <img
-                    alt=""
-                    src="http://cdn.hundositebuilder.com/simple-react-wordpress.svg"
-                    width="62"
-                    height="36"
-                    className="d-inline-block align-top"
-                />{' '}
-                <div className="bloginfo">{bloginfo[0]}<br /><span className="blog-description">{bloginfo[1]}</span></div>
+                {brandImg}
+                <div className="bloginfo"><span className="blog-title">{bloginfo[0]}</span><br /><span className="blog-description">{bloginfo[1]}</span></div>
             </Navbar.Brand>
             <Navbar.Toggle id="navbar-toggler" onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="responsive-navbar-nav" className="navbar-toggle" style={{ display: 'none' }} />
             <Navbar.Collapse id="responsive-navbar-nav">

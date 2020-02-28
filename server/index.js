@@ -13,7 +13,7 @@ const http = require('http')
 const options = {
   hostname: 'admin.simplereactwordpress.com',
   port: 80,
-  path: '/wp-content/themes/simpleReactWP/js/config.php',
+  path: '/wp-content/themes/build/js/config.php',
   method: 'GET'
 }
 
