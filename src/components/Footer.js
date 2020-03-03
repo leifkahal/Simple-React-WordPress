@@ -15,14 +15,15 @@ const Footer = (props) => {
         getFooter();
     }, []);
 
-    const apiDomain = global.Configs.apiDomain;
-    const reactUrl = global.Configs.reactUrl;
+    const apiDomain = global.Configs.apiDomain
+    const reactUrl = global.Configs.reactUrl
+    const footerClasses = global.Configs.footerClasses
     let reactLink
     let i = 0;
     let j = 0;
 
     return (
-        <div id="footer_dark" className="footer-dark" style={{ display: 'none' }}>
+        <div id="footer_dark" className={footerClasses} style={{ display: 'none' }}>
             <footer>
                 <div className="container">
                     <div className="row">

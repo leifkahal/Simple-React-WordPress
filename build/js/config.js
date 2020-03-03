@@ -1,8 +1,8 @@
 
 var Configs = {
-	"apiUrl": "http://admin.simplereactwordpress.com/wp-json/wp/v2",
-	"apiDomain": "http://admin.simplereactwordpress.com",
-	"reactUrl": "http://admin.simplereactwordpress.com",
+	"apiUrl": "https://admin.simplereactwordpress.com/wp-json/wp/v2",
+	"apiDomain": "https://admin.simplereactwordpress.com",
+	"reactUrl": "https://admin.simplereactwordpress.com",
 	"frontPage": "blog/",
 	"stylesheetUrls": [],
 	"bootstrapUrl": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
@@ -18,7 +18,7 @@ var Configs = {
 	"jqueryJs": "https://code.jquery.com/jquery-3.4.1.slim.min.js",
 	"popperJs": "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js",
   "defaultThumb": "https://wpart.org/wp-content/uploads/2016/11/morning-coffee-wordpress-red-wallpaper-1050x656.jpg",
-  "wpStylesheet": "http://admin.simplereactwordpress.com/wp-content/themes/build/style.css",
+  "wpStylesheet": "https://admin.simplereactwordpress.com/wp-content/themes/build/style.css",
   "brandingLogo": "",
   "fofBackground": "",
   "navbarClasses": "navbar navbar-expand-lg navbar-dark bg-dark sticky-top"

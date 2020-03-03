@@ -70,6 +70,7 @@ function react_config_settings_init() {
   register_setting( 'react-config', 'footer_setting_field_5' );
   register_setting( 'react-config', 'footer_setting_field_6' );
   register_setting( 'react-config', 'footer_setting_field_7' );
+  register_setting( 'react-config', 'footer_setting_field_8' );
 
   function footer_setting_section_callback() {
     echo '<em>Information that will be displayed in the Footer.</em>';
@@ -154,7 +155,10 @@ function css_setting_field_markup() {
   <td><input type="text" id="footer_setting_field_6" name="footer_setting_field_6" value="<?php echo get_option('footer_setting_field_6'); ?>" size="50"></td>
 <tr>
   <th scope="row">Instagram URL</th>
-  <td><input type="text" id="footer_setting_field_6" name="footer_setting_field_6" value="<?php echo get_option('footer_setting_field_7'); ?>" size="50"></td>
+  <td><input type="text" id="footer_setting_field_7" name="footer_setting_field_7" value="<?php echo get_option('footer_setting_field_7'); ?>" size="50"></td>
+<tr>
+  <th scope="row">Footer Classes</th>
+  <td><input type="text" id="footer_setting_field_8" name="footer_setting_field_8" value="<?php echo get_option('footer_setting_field_8'); ?>" size="50"></td>
   <?php
   }
 

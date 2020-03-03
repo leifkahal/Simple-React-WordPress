@@ -774,11 +774,4 @@ register_rest_route( 'wp/v2', 'sidebar/html', array(
  *******************************************
  ******************************************/
 add_filter( 'big_image_size_threshold', '__return_false' );
-
-// ADD TARGET BLANK TO AUTHOR NAME IN COMMENTS
-add_filter( "get_comment_author_link", "change_comment_author_link" );
-
-function change_comment_author_link( $author_link ){
-    return str_replace( "<a ", get_the_permalink(), $author_link );
-}
 ?>

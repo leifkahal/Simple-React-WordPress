@@ -19,7 +19,16 @@ function config_save() {
 	else {$popper_js = "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js";}
 	
   if(get_option( 'bootstrap_setting_field_1' )) {$bootstrapCss = get_option( 'bootstrap_setting_field_1' );}
-	else {$bootstrapCss = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css";}
+  else {$bootstrapCss = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css";}
+    
+  if(get_option( 'bootstrap_setting_field_5' )) {$navbarClasses = get_option( 'bootstrap_setting_field_5' ); }
+  else {$navbarClasses = "navbar navbar-expand-lg navbar-dark bg-custom sticky-top";}
+
+  if(get_option( 'bootstrap_setting_field_5' )) {$footerClasses = get_option( 'bootstrap_setting_field_5' ); }
+  else {$footerClasses = "footer-dark bg-custom";}
+
+  if(get_option( 'branding_setting_field_2' )) {$defaultThumb = get_option( 'branding_setting_field_2' );}
+  else {$defaultThumb = "https://admin.simplereactwordpress.com/wp-content/uploads/2020/03/simple-react-wordpress.jpg";}
 	
   $cont = '
 var Configs = {
@@ -78,11 +87,12 @@ var Configs = {
 	"bootstrapJs": "' . $bootstrap_js . '",
 	"jqueryJs": "' . $jquery_js . '",
 	"popperJs": "' . $popper_js . '",
-  "defaultThumb": "' . get_option( 'branding_setting_field_2' ) . '",
+  "defaultThumb": "' . $defaultThumb . '",
   "wpStylesheet": "' . get_template_directory_uri().'/style.css' . '",
   "brandingLogo": "' . get_option( 'branding_setting_field_1' ) . '",
   "fofBackground": "' . get_option( 'branding_setting_field_4' ) . '",
-  "navbarClasses": "' . get_option( 'bootstrap_setting_field_5' ) . '"
+  "navbarClasses": "' . $navbarClasses . '",
+  "footerClasses": "' . $footerClasses . '",
 
 }';
 
