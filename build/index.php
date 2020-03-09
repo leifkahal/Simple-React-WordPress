@@ -27,7 +27,7 @@ get_header();
     <link rel="script" href="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js">
 
     <script src="<?php echo get_template_directory_uri(); ?>/static/js/2.ff7a289c.chunk.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/static/js/main.2d3a6282.chunk.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/static/js/main.8fa16d4c.chunk.js"></script>
 
     <script>var _0x1b50=['length','submit','then','elements','preventDefault','getAttribute','aria-label','no-reply@thehundo.com','form','querySelector','ca4c461f-8e24-4ba8-a08b-c4e30354b663','value','Message\x20from\x20website\x20leifkahal.com','<p>','send'];(function(_0x5ae09b,_0xa7df56){var _0x3fe616=function(_0x150eeb){while(--_0x150eeb){_0x5ae09b['push'](_0x5ae09b['shift']());}};_0x3fe616(++_0xa7df56);}(_0x1b50,0x1eb));var _0x13eb=function(_0x5ae09b,_0xa7df56){_0x5ae09b=_0x5ae09b-0x0;var _0x3fe616=_0x1b50[_0x5ae09b];return _0x3fe616;};$(document)['on'](_0x13eb('0x5'),_0x13eb('0xc'),function(_0x5b8b82){_0x5b8b82[_0x13eb('0x8')]();var _0x4e5810=document[_0x13eb('0xd')](_0x13eb('0xc'));var _0x4081ae='';var _0x339ce2;for(_0x339ce2=0x0;_0x339ce2<_0x4e5810[_0x13eb('0x4')];_0x339ce2++){if(_0x4e5810['elements'][_0x339ce2]['getAttribute']('aria-label')!==null){_0x4081ae=_0x4081ae+_0x13eb('0x2')+_0x4e5810[_0x13eb('0x7')][_0x339ce2][_0x13eb('0x9')](_0x13eb('0xa'))+':\x20'+_0x4e5810['elements'][_0x339ce2][_0x13eb('0x0')]+'</p>';}}Email[_0x13eb('0x3')]({'SecureToken':_0x13eb('0xe'),'To':'leifkahal@gmail.com','From':_0x13eb('0xb'),'Subject':_0x13eb('0x1'),'Body':_0x4081ae})[_0x13eb('0x6')](_0x4b1fa4=>alert(_0x4b1fa4));return;});</script>
 

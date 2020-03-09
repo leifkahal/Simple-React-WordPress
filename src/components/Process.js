@@ -58,7 +58,7 @@ function Process(post_type, endpoint, rand) {
     const [getTheContent, setData] = useState([]);
 
     useEffect(() => {
-        document.getElementById("footer_dark").style.display = "none"
+        document.getElementById("footer_dark").style.opacity = "0"
         document.getElementById('spinner').style.display = 'block';
         //didn't like the flash when content changed...
         
@@ -108,7 +108,7 @@ function Process(post_type, endpoint, rand) {
             else { setData(theData); }
 
             document.getElementById('spinner').style.display = 'none';
-            document.getElementById('footer_dark').style.display = 'block';
+            document.getElementById('footer_dark').style.opacity = '1';
             
             //add bootstrap class to Gutenberg Form elements
             if(document.querySelector("form")) {

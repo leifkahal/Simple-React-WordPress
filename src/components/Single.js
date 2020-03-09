@@ -20,7 +20,7 @@ const Single = (props) => {
 
     if (singleContent) {
         return (
-            <Col md={9} lg={9} xl={9}>
+            <Col md={9} lg={9} xl={9} className="single-post">
                 <Head title={title} />
                 <h1>{title}</h1>
                 <div onClick={handleClick} dangerouslySetInnerHTML={createHTML()} className='wp-html' />

@@ -10,7 +10,7 @@
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
     <script src="<?php echo get_template_directory_uri(); ?>/js/config.js"></script>
 
-    <title><?php echo the_title(); ?></title>
+    <title><?php echo the_title(); ?> | Hickory, North Carolina</title>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="<?php echo the_title(); ?>" />
     <meta name="twitter:description" content="<?php echo the_excerpt(); ?>" />

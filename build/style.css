@@ -29,9 +29,7 @@
     color: rgba(255, 255, 255, .75) !important;
 }
 
-.d-inline-block {
-    margin-top: -4px;
-}
+
 .is-style-outline .wp-block-button__link {
     border: 1px solid;
     font-weight: 200 !important;
@@ -290,7 +288,7 @@ iframe {
 
 .sidebar-container {
     margin-bottom: 50px;
-    osition: relative;
+    position: relative;
     z-index: 99999999;
 }
 
@@ -568,10 +566,9 @@ span.blog-title {
 }
 
 .d-inline-block {
-    display: inline-block!important;
     float: left;
-    margin-right: 10px;
-    margin-left: 20px;
+    margin-right: 4px;
+    margin-left: 10px;
 }
 
 .navbar-brand {

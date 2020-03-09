@@ -199,7 +199,7 @@ function srwpwp_pagination()
 function srwpwp_index($length) // Create 20 Word Callback for Index page Excerpts, call using srwpwp_excerpt('srwpwp_index');
 
 {
-    return 20;
+    return 50;
 }
 
 // Remove Admin bar
@@ -453,10 +453,6 @@ function modify_read_more_link()
 }
 add_filter('the_content_more_link', 'modify_read_more_link');
 
-// change excerpt length
-add_filter('excerpt_length', function ($length) {
-    return 20;
-});
 
 // create endpoint for is_user_logged_in
 function api_wp_logged_in()

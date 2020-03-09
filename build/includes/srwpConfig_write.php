@@ -28,7 +28,7 @@ function config_save() {
   else {$footerClasses = "footer-dark bg-custom";}
 
   if(get_option( 'branding_setting_field_2' )) {$defaultThumb = get_option( 'branding_setting_field_2' );}
-  else {$defaultThumb = "https://admin.simplereactwordpress.com/wp-content/uploads/2020/03/simple-react-wordpress.jpg";}
+  else {$defaultThumb = "http://cdn.hundositebuilder.com/simple-react-wordpress-thumb.jpg";}
 	
   $cont = '
 var Configs = {
