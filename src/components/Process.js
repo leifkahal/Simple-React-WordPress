@@ -109,6 +109,10 @@ function Process(post_type, endpoint, rand) {
 
             document.getElementById('spinner').style.display = 'none';
             document.getElementById('footer_dark').style.opacity = '1';
+
+            if(document.querySelector(".single-post")) {
+                document.querySelector(".single-post").style.opacity = "1"
+              }
             
             //add bootstrap class to Gutenberg Form elements
             if(document.querySelector("form")) {

@@ -48,16 +48,19 @@
 
   <script>
     $(document).on("click", ".wp-block-button__link", function (event) {
-      
-      document.getElementById("footer_dark").style.display = "none"
+      window.scrollTo(0, 0);
       if ($("#responsive-navbar-nav").hasClass("show")) {
         $("#navbar-toggler").trigger("click.bs.dropdown")
+      }
+      document.getElementById("footer_dark").style.opacity = "0"
+      if(document.querySelector(".single-post")) {
+        document.querySelector(".single-post").style.opacity = "0"
       }
     })
   </script>
   <script>
     $(document).on("click", ".react-link", function () {
-      document.getElementById("footer_dark").style.display = "none"
+      document.getElementById("footer_dark").style.opacity = "0"
       if ($("#responsive-navbar-nav").hasClass("show")) {
         $("#navbar-toggler").trigger("click.bs.dropdown")
       }

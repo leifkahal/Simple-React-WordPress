@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="no-js" <?php language_attributes(); ?>>
 
 <head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta content-type="text/html" />
     <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -30,6 +31,15 @@
     <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="<?php echo get_template_directory_uri(); ?>/style.css">
     <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css?family=Hind|Montserrat:200,400,600,800&display=swap">
-
-     
+    
 </head>
+
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <?php 
+    if (!empty($_POST))
+    {echo "<div id="success" class="alert alert-success has-text-align-center" role="alert" style="display:none">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Your message has been sent.
+       </div>";}
+    wp_body_open(); ?>

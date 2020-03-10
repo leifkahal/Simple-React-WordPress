@@ -23,7 +23,7 @@ const Footer = (props) => {
     let j = 0;
 
     return (
-        <div id="footer_dark" className={footerClasses} style={{ display: 'none' }}>
+        <div id="footer_dark" className={footerClasses} style={{ opacity: '0' }}>
             <footer>
                 <div className="container">
                     <div className="row">

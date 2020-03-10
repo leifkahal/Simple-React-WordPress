@@ -17,7 +17,7 @@ var Configs = {
 	"bootstrapJs": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js",
 	"jqueryJs": "https://code.jquery.com/jquery-3.4.1.slim.min.js",
 	"popperJs": "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js",
-  "defaultThumb": "http://cdn.hundositebuilder.com/simple-react-wordpress-thumb.jpg",
+  "defaultThumb": "https://cdn.hundositebuilder.com/simple-react-wordpress-thumb.jpg",
   "wpStylesheet": "https://admin.simplereactwordpress.com/wp-content/themes/build/style.css",
   "brandingLogo": "/wp-content/uploads/simple-react-wordpress.svg",
   "fofBackground": "",

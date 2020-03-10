@@ -92,14 +92,14 @@ function simpleReactWP_nav()
     ));
 }
 
-// Load simpleReactWP styles
+/* Load simpleReactWP styles
 function simpleReactWP_styles()
 {
     wp_register_style('simpleReactWP', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('simpleReactWP'); // Enqueue it!
 
 }
-
+*/
 
 // Register simpleReactWP Navigation
 function register_srwp_menu()
@@ -312,6 +312,7 @@ add_action('wp_enqueue_scripts', 'simpleReactWP_styles'); // Add Theme Styleshee
 add_action('init', 'register_srwp_menu'); // Add simpleReactWP Menu
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'srwpwp_pagination'); // Add our srwp Pagination
+add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
 remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
@@ -367,6 +368,48 @@ function srwp_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shortc
 
 {
     return '<h2>' . $content . '</h2>';
+}
+
+/*------------------------------------*\
+	Custom Post Types
+\*------------------------------------*/
+
+// Create 1 Custom Post type for a Demo, called HTML5-Blank
+function create_post_type_html5()
+{
+    register_taxonomy_for_object_type('category', 'html5-blank'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('post_tag', 'html5-blank');
+    register_post_type('html5-blank', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('HTML5 Blank Custom Post', 'html5blank'), // Rename these to suit
+            'singular_name' => __('HTML5 Blank Custom Post', 'html5blank'),
+            'add_new' => __('Add New', 'html5blank'),
+            'add_new_item' => __('Add New HTML5 Blank Custom Post', 'html5blank'),
+            'edit' => __('Edit', 'html5blank'),
+            'edit_item' => __('Edit HTML5 Blank Custom Post', 'html5blank'),
+            'new_item' => __('New HTML5 Blank Custom Post', 'html5blank'),
+            'view' => __('View HTML5 Blank Custom Post', 'html5blank'),
+            'view_item' => __('View HTML5 Blank Custom Post', 'html5blank'),
+            'search_items' => __('Search HTML5 Blank Custom Post', 'html5blank'),
+            'not_found' => __('No HTML5 Blank Custom Posts found', 'html5blank'),
+            'not_found_in_trash' => __('No HTML5 Blank Custom Posts found in Trash', 'html5blank')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'post_tag',
+            'category'
+        ) // Add Category and Post Tags support
+    ));
 }
 
 /*----------------------------------------------------------------------
@@ -477,19 +520,9 @@ add_action('rest_api_init', function () {
 // force this custom permalink structure
 add_action('init', function () {
     global $wp_rewrite;
-    $wp_rewrite->set_permalink_structure('/%post_type%/%postname%/');
+    $wp_rewrite->set_permalink_structure('/post/%postname%/');
 });
 
-add_filter('post_link', 'post_type_permalink', 10, 3);
-add_filter('page_link', 'post_type_permalink', 10, 3);
-add_filter('post_type_link', 'post_type_permalink', 10, 3);
-
-function post_type_permalink($permalink, $post_id)
-{
-    global $post;
-    $taxonomy_slug = get_post_type($post_id);
-    return str_replace('%post_type%', $taxonomy_slug, $permalink);
-}
 
 function remove_menu_items()
 {
@@ -770,4 +803,11 @@ register_rest_route( 'wp/v2', 'sidebar/html', array(
  *******************************************
  ******************************************/
 add_filter( 'big_image_size_threshold', '__return_false' );
+
+/******************************************
+function after_body_tag_code() {
+    echo 123;
+}
+add_action( 'wp_body_open', 'fter_body_tag_code' );
+******************************************/
 ?>
