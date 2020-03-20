@@ -25,21 +25,17 @@
     <meta property="og:image:url" content="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'thumbnail'); ?>" />
     <meta property="og:image:secure_url" content="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'thumbnail'); ?>" />
     <meta name="google-site-verification" content="v4E99j91Ut-CuYlmWmgiGU5pJKm6eTlfjhwM17-t5mc" />
+    
+    <?php wp_head(); ?>
 
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" id='wp-block-library-css'  href='<?php echo site_url(); ?>/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2' media='all' />
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" id='wp-block-editor-css'  href='<?php echo site_url(); ?>/wp-includes/css/dist/block-editor/style.min.css?ver=5.3.2' media='all' />
     <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="<?php echo get_template_directory_uri(); ?>/style.css">
     <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css?family=Hind|Montserrat:200,400,600,800&display=swap">
+    <link rel="stylesheet" as="style" onload="this.rel = 'stylesheet'" id="gutenberg_forms-cgb-style-css-css" href="http://admin.simplereactwordpress.com/wp-content/plugins/forms-gutenberg/dist/blocks.style.build.css" media="all">
     
 </head>
 
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
-    <?php 
-    if (!empty($_POST))
-    {echo "<div id="success" class="alert alert-success has-text-align-center" role="alert" style="display:none">
-        <ion-icon name="checkmark-circle-outline"></ion-icon> Your message has been sent.
-       </div>";}
-    wp_body_open(); ?>
+    <?php wp_body_open(); ?>

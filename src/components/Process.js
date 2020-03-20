@@ -114,17 +114,25 @@ function Process(post_type, endpoint, rand) {
                 document.querySelector(".single-post").style.opacity = "1"
               }
             
-            //add bootstrap class to Gutenberg Form elements
-            if(document.querySelector("form")) {
-                document.querySelector("input[aria-label='Name']").classList.add("form-control");
-                document.querySelector("input[type='Email']").classList.add("form-control");
-                document.querySelector("textarea[aria-label='Message']").classList.add("form-control");
-                document.querySelector("input[aria-label='Website']").classList.add("form-control");
-                document.querySelector("button[name='submit']").classList.add("btn");
-            }
+            const formInputs = document.querySelectorAll("input");
+            formInputs.forEach(function(form_input) {
+                form_input.classList.add("form-control")
+            });
+            const dateInput = document.querySelectorAll("input[data-validation='date']");
+            dateInput.forEach(function(date_input) {
+                date_input.type = "date";
+                date_input.readOnly = false;
+            });
+            const phoneInput = document.querySelectorAll("input[data-phone='true']");
+            phoneInput.forEach(function(phone_input) {
+                phone_input.type = "tel";
+                phone_input.pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}";
+                phone_input.readOnly = false;
+            });
             window.scrollTo(0, 0);
         }
         getPage();
+        // rand is used because this component is sometimes called by a component that is not re-rendered
     }, [rand])
 
     return getTheContent;

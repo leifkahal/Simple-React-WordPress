@@ -1,19 +1,15 @@
-import React from 'react';
-import Sidebar from './Sidebar'
+import React from 'react'
 import PostList from './Post-List'
 import Single from './Single'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col' 
 
 
 const Posts = ({ props, match }) => {
 
-    let postType = "";
-    let endpoint = "";
-    let singlePost = ""; 
-    let pageNum = "";
-    let title = "";
-    const rand = Math.random();
+    let postType
+    let endpoint
+    let singlePost
+    let pageNum
+    let title
 
     if (match) {
         endpoint = match.params.id;
@@ -23,7 +19,7 @@ const Posts = ({ props, match }) => {
         if (match.params.year) {
             postType = 'archive';
             endpoint = { year: match.params.year, month: match.params.month };
-            title = 'Archive: | ' +match.params.month +'/' + match.params.year;
+            title = 'Archive: | ' + match.params.month + '/' + match.params.year;
         } else if (match.params.tag) {
             postType = 'tag';
             endpoint = match.params.tag;
@@ -35,7 +31,7 @@ const Posts = ({ props, match }) => {
             postType = 'category';
             endpoint = [match.params.title, match.params.pageNum];
             title = match.params.title.replace(/^\w/, c => c.toUpperCase());
-        } else if(match.params.blogPage) {
+        } else if (match.params.blogPage) {
             postType = 'post';
             endpoint = ['/?page=' + match.params.blogPage];
             pageNum = match.params.blogPage;
@@ -46,7 +42,7 @@ const Posts = ({ props, match }) => {
             title = match.params.title.replace(/^\w/, c => c.toUpperCase());
         }
     }
-    // if match is not set... is site root
+    // if match is not set... was rendered by <Homepage> not <Route> and is Display Latest Posts
     else {
         postType = 'post';
         endpoint = ['?page=1'];
@@ -57,22 +53,11 @@ const Posts = ({ props, match }) => {
 
     if (singlePost) {
         return (
-            <div className="category-wrapper close-nav">
-                <Row>
-                    <Col md={3} lg={3} xl={3} className="sidebar-container"><Sidebar /></Col>
-                    <Single postType={postType} endpoint={endpoint} rand={rand} />
-                </Row>
-
-            </div>
+            <Single postType={postType} endpoint={endpoint} rand={match} />
         );
     } else {
         return (
-            <div className="category-wrapper close-nav" style={{ minHeight: '100vh' }}>
-                <Row>
-                    <Col md={3} lg={3} xl={3} className="sidebar-container"><Sidebar /></Col>
-                    <PostList postType={postType} endpoint={endpoint} rand={rand} currentPage={pageNum} title={title} />
-                </Row>
-            </div>
+            <PostList postType={postType} endpoint={endpoint} rand={match} currentPage={pageNum} title={title} />
         );
     }
 

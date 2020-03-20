@@ -24,7 +24,7 @@ function config_save() {
   if(get_option( 'bootstrap_setting_field_5' )) {$navbarClasses = get_option( 'bootstrap_setting_field_5' ); }
   else {$navbarClasses = "navbar navbar-expand-lg navbar-dark bg-custom sticky-top";}
 
-  if(get_option( 'bootstrap_setting_field_5' )) {$footerClasses = get_option( 'bootstrap_setting_field_5' ); }
+  if(get_option( 'footer_setting_field_8' )) {$footerClasses = get_option( 'bootstrap_setting_field_5' ); }
   else {$footerClasses = "footer-dark bg-custom";}
 
   if(get_option( 'branding_setting_field_2' )) {$defaultThumb = get_option( 'branding_setting_field_2' );}

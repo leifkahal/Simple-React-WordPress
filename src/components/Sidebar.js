@@ -7,15 +7,15 @@ import { withRouter } from 'react-router-dom'
 const Sidebar = (props) => {
 
     const [widgetContent, setContent] = useState([]);
-
-  useEffect(() => {
-    async function getWidgets() {
-      const content = await fetch(`${global.Configs.apiUrl}/sidebar/json`);
-      const widgets = await content.json();
-      setContent(widgets);
-    }
-    getWidgets();
-  }, []);
+    //get the sidebar content
+    useEffect(() => {
+        async function getWidgets() {
+            const content = await fetch(`${global.Configs.apiUrl}/sidebar/json`);
+            const widgets = await content.json();
+            setContent(widgets);
+        }
+        getWidgets();
+    }, [props]);
 
     const apiDomain = global.Configs.apiDomain;
     const reactUrl = global.Configs.reactUrl;
@@ -23,38 +23,40 @@ const Sidebar = (props) => {
     let i = 0;
 
     return (
-        <div id="sidebar" className="sidebar">
-            {widgetContent.map(sidebarItem => {
-                i++;
-                return (
-                    <Nav key={i} defaultActiveKey="/home" className="flex-column widget-container">
-                        <label className="sidebar-title">{sidebarItem.title}</label>
-                        {sidebarItem.links.map(linkItem => {
-                            if (linkItem.html) {
-                                function createMarkup() { return { __html: linkItem.html } }
-                                return (
-                                    <div key={Math.random()} onClick={handleClick} dangerouslySetInnerHTML={createMarkup()} />
-                                );
-                            } else {
-                                const linkTo = () => { return (linkItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
-                                // check if is react-link or _blank for footer display:none
-                                if (linkItem.target === '_blank') { reactLink = '' } else { reactLink = ' react-link' }
-                                if (reactLink) {
+        <React.Fragment>
+            <div id="sidebar" className="sidebar">
+                {widgetContent.map(sidebarItem => {
+                    i++;
+                    return (
+                        <Nav key={i} defaultActiveKey="/home" className="flex-column widget-container">
+                            <label className="sidebar-title">{sidebarItem.title}</label>
+                            {sidebarItem.links.map(linkItem => {
+                                if (linkItem.html) {
+                                    function createMarkup() { return { __html: linkItem.html } }
                                     return (
-                                        <Link key={Math.random()} to={linkTo} className="navbar-left nav-link react-link">{linkItem.label}</Link>
+                                        <div key={Math.random()} onClick={handleClick} dangerouslySetInnerHTML={createMarkup()} />
                                     );
                                 } else {
-                                    return (
-                                        <a key={Math.random()} href={linkItem.url} className="navbar-left nav-link" rel="noopener noreferrer" target="_blank">{linkItem.label}</a>
-                                    );
+                                    const linkTo = () => { return (linkItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
+                                    // check if is react-link or _blank for footer display:none
+                                    if (linkItem.target === '_blank') { reactLink = '' } else { reactLink = ' react-link' }
+                                    if (reactLink) {
+                                        return (
+                                            <Link key={Math.random()} to={linkTo} className="navbar-left nav-link react-link">{linkItem.label}</Link>
+                                        );
+                                    } else {
+                                        return (
+                                            <a key={Math.random()} href={linkItem.url} className="navbar-left nav-link" rel="noopener noreferrer" target="_blank">{linkItem.label}</a>
+                                        );
+                                    }
                                 }
-                            }
-                        })}
-                    </Nav>
-                );
-            })}
+                            })}
+                        </Nav>
+                    );
+                })}
 
-        </div >
+            </div >
+        </React.Fragment>
     );
 
     // Functions //////////////////////////////////////////////////////////////////////
@@ -76,7 +78,8 @@ const Sidebar = (props) => {
             e.preventDefault();
             let resHref = getHref.split(/href="(.*?...)"/);
             let finalHref = resHref[0].replace(window.Configs.reactUrl, '').replace(':3000', '')
-            props.history.push(finalHref)
+            var url = new URL(finalHref)
+            props.history.push(url.pathname)
         }
     }
 }

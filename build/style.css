@@ -635,8 +635,8 @@ span.blog-title {
 @media (max-width:767px) {
     .category-wrapper {
         padding-top: 25px;
-        margin-left: 1.5em;
-        margin-right: 1.5em;
+        padding-left: 1.75em;
+        padding-right: 1.75em;
     }
 }
 

@@ -100,6 +100,12 @@ function simpleReactWP_styles()
 
 }
 */
+// Load HTML5 Blank scripts (header.php)
+function srwp_header_scripts()
+{
+        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('html5blankscripts'); // Enqueue it!
+}
 
 // Register simpleReactWP Navigation
 function register_srwp_menu()
@@ -307,6 +313,7 @@ Actions + Filters + ShortCodes
 \*------------------------------------*/
 
 // Add Actions
+add_action('init', 'srwp_header_scripts'); // Add Custom Scripts to wp_head
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'simpleReactWP_styles'); // Add Theme Stylesheet
 add_action('init', 'register_srwp_menu'); // Add simpleReactWP Menu

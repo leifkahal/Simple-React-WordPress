@@ -52,6 +52,7 @@ const Page = (props) => {
     }
 
     // Functions //////////////////////////////////////////////////////////////////////
+
     function createMarkup() {
         return { __html: pageContent.map(html => (html.content_shortcode)) };
     }
@@ -74,7 +75,8 @@ const Page = (props) => {
             e.preventDefault();
             let resHref = getHref.split(/href="(.*?...)"/);
             let finalHref = resHref[0].replace(window.Configs.reactUrl, '').replace(':3000', '')
-            props.history.push(finalHref)
+            var url = new URL(finalHref)
+            props.history.push(url.pathname)
         }
     }
 }

@@ -40,6 +40,7 @@
     background-color: #fc9503 !important;
     border-color: #fc9503;
     margin-top:20px;
+    border-radius:28px;
 }
 
 .copyright a {
@@ -368,6 +369,8 @@ a:focus, button:focus, input:focus, textarea:focus {
     outline: none !important;
 }
 
+input::placeholder { color:#ccc;font-weight:200; font-style: italic; }
+
 .call-to-action {
     padding-bottom: 9rem;
 }
@@ -635,8 +638,8 @@ span.blog-title {
 @media (max-width:767px) {
     .category-wrapper {
         padding-top: 25px;
-        margin-left: 1.5em;
-        margin-right: 1.5em;
+        padding-left: 1.75em;
+        padding-right: 1.75em;
     }
 }
 
