@@ -11,11 +11,23 @@
 
 get_header(); ?>
 
+<link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="<?php echo get_template_directory_uri(); ?>/style.css">
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css?family=Hind|Montserrat:200,400,600,800&display=swap">
+    <link rel="stylesheet" as="style" onload="this.rel = 'stylesheet'" id="gutenberg_forms-cgb-style-css-css" href="https://admin.simplereactwordpress.com/wp-content/themes/build/style.css" media="all">
+</head>
+
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
 <?php
     if ( have_posts() ) { ?>
     
-				<div id="root"></div>
+	<div id="root"></div>
     <div id="spinner"></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 		<?php	}
 

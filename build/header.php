@@ -9,7 +9,6 @@
     <meta name="theme-color" content="#000000" />
 
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
-    <script src="<?php echo get_template_directory_uri(); ?>/js/config.js"></script>
 
     <title><?php echo the_title(); ?> | Hickory, North Carolina</title>
     <meta name="twitter:card" content="summary_large_image" />
@@ -26,15 +25,7 @@
     <meta property="og:image:secure_url" content="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'thumbnail'); ?>" />
     <meta name="google-site-verification" content="v4E99j91Ut-CuYlmWmgiGU5pJKm6eTlfjhwM17-t5mc" />
     
-    <?php wp_head(); ?>
 
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="<?php echo get_template_directory_uri(); ?>/style.css">
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css?family=Hind|Montserrat:200,400,600,800&display=swap">
-    
-</head>
-
-<body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
-
-    <?php wp_body_open(); ?>
+    <?php 
+    wp_body_open();
+    ?>

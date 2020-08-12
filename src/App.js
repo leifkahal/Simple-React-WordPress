@@ -6,6 +6,8 @@ import Page from './components/Page'
 import Footer from './components/Footer'
 import Homepage from './components/Homepage'
 import FourOFour from './components/404'
+import Sidebar from './components/Sidebar'
+import Row from 'react-bootstrap/Row'
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
   return (
     <div className="app-wrapper" style={{ minHeight: '100vh' }}>
       <Navibar />
+      <Row className="content-row">
+      <Sidebar/>
       <Switch>
         <Route path="/category/:title" exact component={Posts} />
         <Route path="/category/:title/page=:pageNum" exact component={Posts} />
@@ -24,6 +28,7 @@ function App() {
         <Route path="/" exact component={Homepage} />
         <Route component={FourOFour} />
       </Switch>
+      </Row>
       <Footer />
     </div>
   );

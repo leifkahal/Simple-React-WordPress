@@ -101,11 +101,12 @@ function simpleReactWP_styles()
 }
 */
 // Load HTML5 Blank scripts (header.php)
-function srwp_header_scripts()
+/*function srwp_header_scripts()
 {
         wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('html5blankscripts'); // Enqueue it!
 }
+*/
 
 // Register simpleReactWP Navigation
 function register_srwp_menu()
@@ -472,10 +473,9 @@ add_filter( 'rest_allow_anonymous_comments', 'filter_rest_allow_anonymous_commen
 function admin_enqueue()
 {
     wp_enqueue_style('admin-styles', get_template_directory_uri() . '/admin.css');
-    wp_register_script('reactConfig', get_template_directory_uri() . '/js/config.js', array(
-        'jquery',
-    ), '1.0.0'); // Conditional script(s)
-    wp_enqueue_script('reactConfig'); // Enqueue it!
+
+    wp_register_script('adminConfig', get_template_directory_uri() . '/js/admin.js', array('jquery',), '1.0.0');
+    wp_enqueue_script('adminConfig'); // Enqueue it!
 }
 add_action('admin_enqueue_scripts', 'admin_enqueue');
 

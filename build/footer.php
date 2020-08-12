@@ -1,114 +1,20 @@
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script>$(document).on("click", ".wp-block-button__link", (function (o) { window.scrollTo(0, 0), $("#responsive-navbar-nav").hasClass("show") && $("#navbar-toggler").trigger("click.bs.dropdown"), document.getElementById("footer_dark").style.opacity = "0", document.querySelector(".single-post") && (document.querySelector(".single-post").style.opacity = "0") }))</script>
+    
+    <script>$(document).on("click", ".react-link", (function () { document.getElementById("footer_dark").style.opacity = "0", $("#responsive-navbar-nav").hasClass("show") && $("#navbar-toggler").trigger("click.bs.dropdown") }))</script>
+    
+    <script>$(window).scroll((function () { $("#responsive-navbar-nav").hasClass("show") && $("#navbar-toggler").trigger("click.bs.dropdown") }))</script>
+        
+    <script>!function (e) { function r(r) { for (var n, l, p = r[0], i = r[1], a = r[2], c = 0, s = []; c < p.length; c++)l = p[c], Object.prototype.hasOwnProperty.call(o, l) && o[l] && s.push(o[l][0]), o[l] = 0; for (n in i) Object.prototype.hasOwnProperty.call(i, n) && (e[n] = i[n]); for (f && f(r); s.length;)s.shift()(); return u.push.apply(u, a || []), t() } function t() { for (var e, r = 0; r < u.length; r++) { for (var t = u[r], n = !0, p = 1; p < t.length; p++) { var i = t[p]; 0 !== o[i] && (n = !1) } n && (u.splice(r--, 1), e = l(l.s = t[0])) } return e } var n = {}, o = { 1: 0 }, u = []; function l(r) { if (n[r]) return n[r].exports; var t = n[r] = { i: r, l: !1, exports: {} }; return e[r].call(t.exports, t, t.exports, l), t.l = !0, t.exports } l.m = e, l.c = n, l.d = function (e, r, t) { l.o(e, r) || Object.defineProperty(e, r, { enumerable: !0, get: t }) }, l.r = function (e) { "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e, "__esModule", { value: !0 }) }, l.t = function (e, r) { if (1 & r && (e = l(e)), 8 & r) return e; if (4 & r && "object" == typeof e && e && e.__esModule) return e; var t = Object.create(null); if (l.r(t), Object.defineProperty(t, "default", { enumerable: !0, value: e }), 2 & r && "string" != typeof e) for (var n in e) l.d(t, n, function (r) { return e[r] }.bind(null, n)); return t }, l.n = function (e) { var r = e && e.__esModule ? function () { return e.default } : function () { return e }; return l.d(r, "a", r), r }, l.o = function (e, r) { return Object.prototype.hasOwnProperty.call(e, r) }, l.p = "/"; var p = this["webpackJsonpsimple-react-wordpress"] = this["webpackJsonpsimple-react-wordpress"] || [], i = p.push.bind(p); p.push = r, p = p.slice(); for (var a = 0; a < p.length; a++)r(p[a]); var f = i; t() }([])</script>
 
-<link rel="script" href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">
-<link rel="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
-<link rel="script" href="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js">
+    <script src="<?php echo get_template_directory_uri(); ?>/js/config.js"></script>
+    
+    <script src="<?php echo get_template_directory_uri(); ?>/static/js/2.c6155dd9.chunk.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/static/js/main.e24069ec.chunk.js"></script>
 
-<script src="<?php echo get_template_directory_uri(); ?>/static/js/2.c8870df4.chunk.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/static/js/main.4494cd48.chunk.js"></script>
-
-<script>
-var _0x312f = ['default', 'length', 'create', '__esModule', 'Module', 'webpackJsonpreact-app', 'splice', 'slice',
-    'exports', 'string', 'bind', 'defineProperty', 'prototype', 'shift', 'call', 'object', 'hasOwnProperty',
-    'apply', 'toStringTag', 'push'
-];
-(function(_0x368165, _0x1d0701) {
-    var _0x1edfee = function(_0x58f443) {
-        while (--_0x58f443) {
-            _0x368165['push'](_0x368165['shift']());
-        }
-    };
-    _0x1edfee(++_0x1d0701);
-}(_0x312f, 0x1f2));
-var _0x4682 = function(_0x368165, _0x1d0701) {
-    _0x368165 = _0x368165 - 0x0;
-    var _0x1edfee = _0x312f[_0x368165];
-    return _0x1edfee;
-};
-! function(_0x5abff2) {
-    function _0x3e6d1e(_0x49458d) {
-        for (var _0x4f1818, _0x450ed7, _0x1fb9f3 = _0x49458d[0x0], _0x21781d = _0x49458d[0x1], _0x32aba1 = _0x49458d[
-                0x2], _0x1d45db = 0x0, _0x2b56da = []; _0x1d45db < _0x1fb9f3[_0x4682('0x3')]; _0x1d45db++) _0x450ed7 =
-            _0x1fb9f3[_0x1d45db], Object[_0x4682('0xe')]['hasOwnProperty']['call'](_0x29826f, _0x450ed7) && _0x29826f[
-                _0x450ed7] && _0x2b56da[_0x4682('0x1')](_0x29826f[_0x450ed7][0x0]), _0x29826f[_0x450ed7] = 0x0;
-        for (_0x4f1818 in _0x21781d) Object[_0x4682('0xe')][_0x4682('0x12')]['call'](_0x21781d, _0x4f1818) && (
-            _0x5abff2[_0x4f1818] = _0x21781d[_0x4f1818]);
-        for (_0x1b1505 && _0x1b1505(_0x49458d); _0x2b56da[_0x4682('0x3')];) _0x2b56da[_0x4682('0xf')]()();
-        return _0x2f6119[_0x4682('0x1')][_0x4682('0x13')](_0x2f6119, _0x32aba1 || []), _0x3cae64();
-    }
-
-    function _0x3cae64() {
-        for (var _0x23143b, _0x673424 = 0x0; _0x673424 < _0x2f6119[_0x4682('0x3')]; _0x673424++) {
-            for (var _0x39b0b3 = _0x2f6119[_0x673424], _0x4d6d92 = !0x0, _0x56fadb = 0x1; _0x56fadb < _0x39b0b3[_0x4682(
-                    '0x3')]; _0x56fadb++) {
-                var _0x1dbe98 = _0x39b0b3[_0x56fadb];
-                0x0 !== _0x29826f[_0x1dbe98] && (_0x4d6d92 = !0x1);
-            }
-            _0x4d6d92 && (_0x2f6119[_0x4682('0x8')](_0x673424--, 0x1), _0x23143b = _0x131c64(_0x131c64['s'] = _0x39b0b3[
-                0x0]));
-        }
-        return _0x23143b;
-    }
-    var _0x5a7dab = {},
-        _0x29826f = {
-            1: 0x0
-        },
-        _0x2f6119 = [];
-
-    function _0x131c64(_0x159999) {
-        if (_0x5a7dab[_0x159999]) return _0x5a7dab[_0x159999][_0x4682('0xa')];
-        var _0xb6ab9d = _0x5a7dab[_0x159999] = {
-            'i': _0x159999,
-            'l': !0x1,
-            'exports': {}
-        };
-        return _0x5abff2[_0x159999][_0x4682('0x10')](_0xb6ab9d[_0x4682('0xa')], _0xb6ab9d, _0xb6ab9d[_0x4682('0xa')],
-            _0x131c64), _0xb6ab9d['l'] = !0x0, _0xb6ab9d[_0x4682('0xa')];
-    }
-    _0x131c64['m'] = _0x5abff2, _0x131c64['c'] = _0x5a7dab, _0x131c64['d'] = function(_0x4f904d, _0x50ff99, _0x5f4f49) {
-        _0x131c64['o'](_0x4f904d, _0x50ff99) || Object[_0x4682('0xd')](_0x4f904d, _0x50ff99, {
-            'enumerable': !0x0,
-            'get': _0x5f4f49
-        });
-    }, _0x131c64['r'] = function(_0x2cc8cd) {
-        'undefined' != typeof Symbol && Symbol[_0x4682('0x0')] && Object[_0x4682('0xd')](_0x2cc8cd, Symbol[_0x4682(
-            '0x0')], {
-            'value': _0x4682('0x6')
-        }), Object[_0x4682('0xd')](_0x2cc8cd, '__esModule', {
-            'value': !0x0
-        });
-    }, _0x131c64['t'] = function(_0x428bec, _0x466531) {
-        if (0x1 & _0x466531 && (_0x428bec = _0x131c64(_0x428bec)), 0x8 & _0x466531) return _0x428bec;
-        if (0x4 & _0x466531 && _0x4682('0x11') == typeof _0x428bec && _0x428bec && _0x428bec[_0x4682('0x5')])
-        return _0x428bec;
-        var _0x3f04e3 = Object[_0x4682('0x4')](null);
-        if (_0x131c64['r'](_0x3f04e3), Object[_0x4682('0xd')](_0x3f04e3, 'default', {
-                'enumerable': !0x0,
-                'value': _0x428bec
-            }), 0x2 & _0x466531 && _0x4682('0xb') != typeof _0x428bec)
-            for (var _0x43aa66 in _0x428bec) _0x131c64['d'](_0x3f04e3, _0x43aa66, function(_0x1b79a7) {
-                return _0x428bec[_0x1b79a7];
-            } [_0x4682('0xc')](null, _0x43aa66));
-        return _0x3f04e3;
-    }, _0x131c64['n'] = function(_0x4dc766) {
-        var _0x35a8b5 = _0x4dc766 && _0x4dc766[_0x4682('0x5')] ? function() {
-            return _0x4dc766[_0x4682('0x2')];
-        } : function() {
-            return _0x4dc766;
-        };
-        return _0x131c64['d'](_0x35a8b5, 'a', _0x35a8b5), _0x35a8b5;
-    }, _0x131c64['o'] = function(_0x5b9c4e, _0x51fe16) {
-        return Object[_0x4682('0xe')]['hasOwnProperty'][_0x4682('0x10')](_0x5b9c4e, _0x51fe16);
-    }, _0x131c64['p'] = '/';
-    var _0x37b2fe = this['webpackJsonpreact-app'] = this[_0x4682('0x7')] || [],
-        _0x1a1204 = _0x37b2fe['push'][_0x4682('0xc')](_0x37b2fe);
-    _0x37b2fe[_0x4682('0x1')] = _0x3e6d1e, _0x37b2fe = _0x37b2fe[_0x4682('0x9')]();
-    for (var _0x4294f0 = 0x0; _0x4294f0 < _0x37b2fe[_0x4682('0x3')]; _0x4294f0++) _0x3e6d1e(_0x37b2fe[_0x4294f0]);
-    var _0x1b1505 = _0x1a1204;
-    _0x3cae64();
-}([]);
-</script>
-<?php wp_footer(); ?>
+<?php 
+wp_head();
+wp_footer();
+?>
 </body>
 
 </html>

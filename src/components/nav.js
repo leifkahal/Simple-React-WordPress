@@ -9,7 +9,6 @@ const Navibar = (props) => {
     const [bloginfo, setInfo] = useState([]);
     const [expanded, setExpanded] = useState(false);
     const apiUrl = global.Configs.apiUrl;
-    const apiDomain = global.Configs.apiDomain;
     const reactUrl = global.Configs.reactUrl;
     const logo = global.Configs.brandingLogo
     let brandImg
@@ -37,9 +36,9 @@ const Navibar = (props) => {
     global.frontPage = bloginfo[2]
     global.Bloginfo = bloginfo
 
-    if(logo) {
+    if (logo) {
         brandImg = <img alt={companyTitle} src={logo} height="32" className="d-inline-block align-top" />
-    } else { brandImg = ''}
+    } else { brandImg = '' }
 
     return (
         <Navbar expanded={expanded} collapseOnSelect expand="lg" className={navbarClasses} >
@@ -51,7 +50,8 @@ const Navibar = (props) => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
                     {menu.map(navItem => {
-                        const linkTo = () => { return (navItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
+                        let url = new URL(navItem.url, reactUrl)
+                        let linkTo = url.pathname
                         return (
                             <Link key={navItem.ID} onClick={() => setExpanded(false)} to={linkTo} className="navbar-right nav-link react-link">{navItem.title}</Link>);
                     })}

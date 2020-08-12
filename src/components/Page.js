@@ -1,7 +1,9 @@
 import React from 'react'
 import Process from './Process'
 import Head from './Head'
+import FourOFour from './404'
 import { withRouter } from 'react-router-dom'
+import handleClick from '../assets/handleClick'
 
 
 const Page = (props) => {
@@ -32,17 +34,16 @@ const Page = (props) => {
             <div id="single" className="page-wrapper" style={{ minHeight: '100vh' }}>
                 <Head title={title} />
                 <div className="wp-page-html" >
-                    <div onClick={handleClick} dangerouslySetInnerHTML={createMarkup()} />
+                    <div onClick={handleClicks} dangerouslySetInnerHTML={createMarkup()} />
                 </div>
             </div>
         );
     }
-    // return 404 for requests reffered by <Route/>
+    // return 404 for requests referred by <Route/>
     else if (props.match) {
         return (
-            <div className="page-wrapper wp-page-html">
-                <h1>404 Not Found</h1>
-            </div>)
+            <FourOFour />
+        )
     }
     // return blank for everything else...
     else {
@@ -57,27 +58,8 @@ const Page = (props) => {
         return { __html: pageContent.map(html => (html.content_shortcode)) };
     }
 
-    function handleClick(e) {
-        let closestA = e.target.closest('a')
-        if (closestA === null) { return }
-        if (closestA.hasAttribute('data-toggle')) { return }
-        if (closestA.getAttribute("target") === '_blank') {
-            let getHref = closestA + ' '
-            if (!getHref) return
-            e.preventDefault()
-            let resHref = getHref.split(/href="(.*?...)"/)
-            let finalHref = resHref[0].replace(window.Configs.reactUrl, '').replace(':3000', '')
-            window.open(finalHref, '_blank');
-        }
-        else {
-            let getHref = closestA + ' ';
-            if (!getHref) return;
-            e.preventDefault();
-            let resHref = getHref.split(/href="(.*?...)"/);
-            let finalHref = resHref[0].replace(window.Configs.reactUrl, '').replace(':3000', '')
-            var url = new URL(finalHref)
-            props.history.push(url.pathname)
-        }
+    function handleClicks(e) {
+        handleClick(e, props)
     }
 }
 

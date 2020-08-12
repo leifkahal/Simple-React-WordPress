@@ -15,7 +15,6 @@ const Footer = (props) => {
         getFooter();
     }, []);
 
-    const apiDomain = global.Configs.apiDomain
     const reactUrl = global.Configs.reactUrl
     const footerClasses = global.Configs.footerClasses
     let reactLink
@@ -35,7 +34,8 @@ const Footer = (props) => {
                                     <ul>
                                         {footerItem.links.map(linkItem => {
                                             j++;
-                                            const linkTo = () => { return (linkItem.url.replace(apiDomain, '').replace(reactUrl, '')) }
+                                            let url = new URL(linkItem.url, reactUrl)
+                                            let linkTo = url.pathname
                                             // check if is react-link or _blank for footer display:none
                                             if (linkItem.target === '_blank') { reactLink = '' } else { reactLink = ' react-link' }
                                             if (reactLink) {

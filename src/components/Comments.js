@@ -9,12 +9,12 @@ const Comments = (props) => {
     const apiUrl = global.Configs.apiUrl;
 
 
-        async function getMenu() {
+        async function getComments() {
             const response = await fetch(`${apiUrl}/wp-json/wp/v2/comments?author_email=[author email]&author_name=[author name]&content=test&post=185`, {
                 method: 'POST'})
             console.log(response);
         }
-        getMenu()
+        getComments()
     
 
     return (

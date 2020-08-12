@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-
-
+import beforeProcess from '../assets/beforeProcess';
+import afterProcess from '../assets/afterProcess'
 
 function Process(post_type, endpoint, rand) {
 
@@ -10,7 +10,7 @@ function Process(post_type, endpoint, rand) {
     let tagSet;
     let pageNum;
     let year;
-    let year2; 
+    let year2;
     let nextYear;
     let nextMonth;
     let month;
@@ -48,7 +48,7 @@ function Process(post_type, endpoint, rand) {
             break;
         case 'footer':
             postType = post_type;
-            apiEndpoint = endpoint; 
+            apiEndpoint = endpoint;
             break;
         default:
             console.log('default');
@@ -58,16 +58,15 @@ function Process(post_type, endpoint, rand) {
     const [getTheContent, setData] = useState([]);
 
     useEffect(() => {
-        document.getElementById("footer_dark").style.opacity = "0"
-        document.getElementById('spinner').style.display = 'block';
-        //didn't like the flash when content changed...
-        
-       
-        async function getPage() {
+
+        beforeProcess(post_type)
+
+        //fetch WordPress API data
+        async function getWpAPi() {
             /*****************************************************************************************************
-             ************These endpoints require more info...this is to preserve pretty urls**********************
+             ***These post types require more info to construct an endpoint...this is to preserve pretty urls*****
              *****************************************************************************************************/
-            // get the category id from WP API and set apiEndpoint
+            // get the category id from category name and set apiEndpoint
             if (catSet) {
                 const categoryData = await fetch(`${apiUrl}/categories/`);
                 const categoryDataContent = await categoryData.json();
@@ -79,7 +78,7 @@ function Process(post_type, endpoint, rand) {
                     } else return ('');
                 });
             }
-            // get the tag id from WP API and set apiEndpoint       
+            // get the tag id from tag name and set apiEndpoint       
             if (tagSet) {
                 const tagsData = await fetch(`${apiUrl}/tags/`);
                 const tagsDataContent = await tagsData.json();
@@ -97,7 +96,7 @@ function Process(post_type, endpoint, rand) {
             // fetch data from WordPress API
             const apiData = await fetch(`${apiUrl}/${postType}/${apiEndpoint}`);
             const theData = await apiData.json();
-            
+
             // getnumber of pages from api response header to use in pagination
             global.pages = apiData.headers.get('X-WP-TotalPages');
 
@@ -106,32 +105,14 @@ function Process(post_type, endpoint, rand) {
             if (theData.data) { setData(false); }
             else if (theData.length === 0) { setData(false); }
             else { setData(theData); }
+            /*****************************************************************************************************
+             **********************Finally! the actual call to the WordPress REST API*****************************
+             *****************************************************************************************************/
 
-            document.getElementById('spinner').style.display = 'none';
-            document.getElementById('footer_dark').style.opacity = '1';
-
-            if(document.querySelector(".single-post")) {
-                document.querySelector(".single-post").style.opacity = "1"
-              }
-            
-            const formInputs = document.querySelectorAll("input");
-            formInputs.forEach(function(form_input) {
-                form_input.classList.add("form-control")
-            });
-            const dateInput = document.querySelectorAll("input[data-validation='date']");
-            dateInput.forEach(function(date_input) {
-                date_input.type = "date";
-                date_input.readOnly = false;
-            });
-            const phoneInput = document.querySelectorAll("input[data-phone='true']");
-            phoneInput.forEach(function(phone_input) {
-                phone_input.type = "tel";
-                phone_input.pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}";
-                phone_input.readOnly = false;
-            });
-            window.scrollTo(0, 0);
+        afterProcess()
+        
         }
-        getPage();
+        getWpAPi();
         // rand is used because this component is sometimes called by a component that is not re-rendered
     }, [rand])
 
@@ -140,7 +121,7 @@ function Process(post_type, endpoint, rand) {
     // function to determine the number of the next month for returning a specific month's 'Archive' list.
     function monthIncrement(month) {
         if (month === '12') { nextMonth = '01'; year2 = ''; nextYear = Number(year) + 1 }
-        else if (month <= 8) { nextMonth = '0' + (Number(month) + 1).toString(); nextYear = ''; } 
+        else if (month <= 8) { nextMonth = '0' + (Number(month) + 1).toString(); nextYear = ''; }
         else { nextMonth = Number(month) + 1; nextYear = ''; }
     }
 
