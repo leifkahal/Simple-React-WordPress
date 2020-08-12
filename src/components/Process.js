@@ -58,7 +58,7 @@ function Process(post_type, endpoint, rand) {
     const [getTheContent, setData] = useState([]);
 
     useEffect(() => {
-
+        let spinner = setTimeout(() => {  document.getElementById('spinner').style.display = 'block'; }, 250)
         beforeProcess(post_type)
 
         //fetch WordPress API data
@@ -93,6 +93,8 @@ function Process(post_type, endpoint, rand) {
             /*****************************************************************************************************
              **********************Finally! the actual call to the WordPress REST API*****************************
              *****************************************************************************************************/
+            
+
             // fetch data from WordPress API
             const apiData = await fetch(`${apiUrl}/${postType}/${apiEndpoint}`);
             const theData = await apiData.json();
@@ -108,7 +110,7 @@ function Process(post_type, endpoint, rand) {
             /*****************************************************************************************************
              **********************Finally! the actual call to the WordPress REST API*****************************
              *****************************************************************************************************/
-
+        clearTimeout(spinner);    
         afterProcess()
         
         }

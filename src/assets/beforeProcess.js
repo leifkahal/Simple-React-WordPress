@@ -4,7 +4,6 @@ function beforeProcess(post_type) {
     if (document.querySelector(".react-fof-wrapper")) {
         document.querySelector('.react-fof-wrapper').style.display = 'none';
     }
-    document.getElementById('spinner').style.display = 'block';
     if (document.querySelector(".single-post")) {
         document.querySelector(".single-post").style.opacity = "0"
     }

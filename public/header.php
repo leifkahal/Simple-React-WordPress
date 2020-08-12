@@ -9,7 +9,6 @@
     <meta name="theme-color" content="#000000" />
 
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/manifest.json" />
-    <script src="<?php echo get_template_directory_uri(); ?>/js/config.js"></script>
 
     <title><?php echo the_title(); ?> | Hickory, North Carolina</title>
     <meta name="twitter:card" content="summary_large_image" />
@@ -27,4 +26,6 @@
     <meta name="google-site-verification" content="v4E99j91Ut-CuYlmWmgiGU5pJKm6eTlfjhwM17-t5mc" />
     
 
-    <?php wp_body_open(); ?>
+    <?php 
+    wp_body_open();
+    ?>

@@ -1,5 +1,4 @@
  function afterProcess() {
-    document.getElementById('spinner').style.display = 'none';
     document.getElementById('footer_dark').style.opacity = '1';
    
     if (document.querySelector(".single-post")) {
@@ -37,6 +36,7 @@
     if (document.querySelector("#four-o-four")) {
         document.querySelector("#four-o-four").style.display = "block"
     }
+    document.getElementById('spinner').style.display = 'none';
  }
 
  export default afterProcess
