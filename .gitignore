@@ -1,4 +1,3 @@
 /node_modules
 /index.php
-.vscode/cpanel
-.vscode/sftp.json
+/.vscode
